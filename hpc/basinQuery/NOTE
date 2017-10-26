@@ -1,0 +1,15 @@
+old version,
+
+For example, suppose we wanted the Z1.0 map from -118, 34 to -117, 35. We 
+would likely run this as:
+
+mpirun -np 4 ./basin_query_mpi -b out.file -f ../conf/ucvm.conf 
+    -m cvms -i 20 -v 1000 -l 34,-118 -s 0.01 -x 101 -y 101
+
+
+This command outputs the data to "out.file" using the "cvms" model defined
+in "../conf/ucvm.conf". It queries each point at 20m increments on the Z-axis
+for when the Vs value is equal to or exceeds 1000m/s. It starts at 34, -118
+and then goes by 0.01 in both the latitude and longitude directions for 101 
+points along the x and y axis, respectively.
+
