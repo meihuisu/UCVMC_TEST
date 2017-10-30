@@ -1,3 +1,10 @@
+GOAL: Evaluate the result from basin_query and basin_query_mpi calls
+
+  subgoal,
+     a) unify the calling api for basin_query and basin_query_mpi
+     b) add capability to dump the intermediate data for verification
+   
+
 old version,
 
 For example, suppose we wanted the Z1.0 map from -118, 34 to -117, 35. We 
@@ -13,3 +20,9 @@ for when the Vs value is equal to or exceeds 1000m/s. It starts at 34, -118
 and then goes by 0.01 in both the latitude and longitude directions for 101 
 points along the x and y axis, respectively.
 
+another example from scec-00/davidgil
+
+ucvm-basin/bin/basinpbs.pbs:mpirun -np $NP -machinefile $PBS_NODEFILE 
+/home/scec-00/davidgil/ucvm-basin/bin/basin_query_mpi -b /scratch/cvmh1191.out 
+-m cvmh -f /home/scec-00/davidgil/ucvm-basin/conf/ucvm.conf -d 10000 -i 10 
+-v 1000 -l 31,-121 -s 0.005 -x 1701 -y 1101 

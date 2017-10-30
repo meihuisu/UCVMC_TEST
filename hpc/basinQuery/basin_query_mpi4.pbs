@@ -1,14 +1,17 @@
 #!/bin/bash
-#PBS -q default
-#PBS -l arch=x86_64,walltime=0:30:00,nodes=1:ppn=1
+#PPPBS -q scec
+#PBS -l arch=x86_64,walltime=00:30:00,nodes=2:ppn=2
 #PBS -V
-#PBS -e /home/scec-00/mei/UCVM_REVIEW/QUERY/basin_query1.err
-#PBS -o /home/scec-00/mei/UCVM_REVIEW/QUERY/basin_query1.out
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi4.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi4.out
 
-cd /home/scec-00/mei/UCVM_REVIEW/QUERY
+export MX_RCACHE=0
 
 ## setup mpi environment
-source /usr/usc/mpich2/default/setup.sh
+source /usr/usc/openmpi/default/setup.sh
+
+## enable some mpi debug output
+ompi_info --param mpi all --level 9
 
 ## prepend anaconda's bin, including python2.7
 export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
@@ -25,23 +28,17 @@ if [ $LD_LIBRARY_PATH ] ; then
 fi
 #echo $LD_LIBRARY_PATH
 
-## setup python script
-if [ $PYTHONPATH ] ; then 
-  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
-  else
-     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
-fi
-#echo $PYTHONPATH
-
-env
+export TEST_TOP_PATH=/home/scec-00/mei/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/basinQuery
 
 ###############################################################################
 
-cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf ucvm.conf
-cp ${UCVM_INSTALL_PATH}/tests/test_latlonsonly.txt test_latlonsonly.txt
+cd /scratch
+cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
+cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 
-${UCVM_INSTALL_PATH}/bin/basin_query -f ucvm.conf -m cvmsi -v 2500 < test_latlonsonly.txt >& basin_query1.result
+mpirun -np 4 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi4.result -f ucvm.conf -m cvms -i 20 -v 1000 -l 34,-118 -s 0.01 -x 101 -y 101
 
-## from mpi version, -l 34,-118 -s 0.01 -x 101 -y 101
-
+echo "Jobs done"
+exit 0
 

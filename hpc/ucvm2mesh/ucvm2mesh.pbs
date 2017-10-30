@@ -1,20 +1,14 @@
 #!/bin/bash
 #PPPBS -q scec
-#PBS -l arch=x86_64,walltime=00:30:00,nodes=1:ppn=1
+#PBS -l arch=x86_64,walltime=0:30:00,nodes=1:ppn=1
 #PBS -V
-#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi1.err
-#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi1.out
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.out
 
 export MX_RCACHE=0
 
 ## setup mpi environment
 source /usr/usc/openmpi/default/setup.sh
-
-## enable some mpi debug output
-ompi_info --param mpi all --level 9
-
-## prepend anaconda's bin, including python2.7
-export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
 
 ## prepend velocity model's lib
 export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
@@ -28,17 +22,15 @@ if [ $LD_LIBRARY_PATH ] ; then
 fi
 #echo $LD_LIBRARY_PATH
 
-export TEST_TOP_PATH=/home/scec-00/mei/UCVM_REVIEW
-export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/basinQuery
+export TEST_SRC_PATH=/home/scec-00/mei/UCVM_REVIEW/UCVMC_TEST/hpc/ucvm2mesh
 
 ###############################################################################
 
 cd /scratch
-cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
-cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+cp ${TEST_SRC_PATH}/ucvm2mesh.conf .
+cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh .
 
-mpirun -np 1 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi1.result -f ucvm.conf -m cvms -i 20 -v 1000 -l 34,-118 -s 0.01 -x 101 -y 101
+./ucvm2mesh -f ucvm2mesh.conf
 
-echo "Jobs done"
+echo "Job done"
 exit 0
-

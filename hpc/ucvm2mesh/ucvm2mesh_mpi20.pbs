@@ -1,20 +1,16 @@
 #!/bin/bash
-#PBS -l nodes=1:ppn=1
-#PBS -q default
-#PBS -l arch=x86_64,walltime=1:30:00,nodes=1:ppn=1
+#PPPBS -q scec
+#PBS -l arch=x86_64,pmem=2000mb,pvmem=3000mb,walltime=00:30:00,nodes=5:ppn=4
 #PBS -V
-#PBS -e /home/scec-00/mei/UCVM_REVIEW/MESH/ucvm2mesh1.err
-#PBS -o /home/scec-00/mei/UCVM_REVIEW/MESH/ucvm2mesh1.out
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh_mpi20.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh_mpi20.out
 
 export MX_RCACHE=0
 
 ## setup mpi environment
-source /usr/usc/mpich2/default/setup.sh
+source /usr/usc/openmpi/default/setup.sh
 
-## prepend anaconda's bin, including python2.7
-export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
-
-## prepend velocity model's lib
+## setup some path
 export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
 export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
 export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
@@ -26,19 +22,15 @@ if [ $LD_LIBRARY_PATH ] ; then
 fi
 #echo $LD_LIBRARY_PATH
 
-## setup python script
-if [ $PYTHONPATH ] ; then 
-  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
-  else
-     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
-fi
-#echo $PYTHONPATH
-
+export TEST_SRC_PATH=/home/scec-00/mei/UCVM_REVIEW/UCVMC_TEST/hpc/ucvm2mesh
 
 ###############################################################################
 
-cp /home/scec-00/mei/UCVM_REVIEW/MESH/ucvm2mesh1.conf .
+cd /scratch
+cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
+cp ${TEST_SRC_PATH}/ucvm2mesh_mpi20.conf .
 
-${UCVM_INSTALL_PATH}/bin/ucvm2mesh -f ucvm2mesh1.conf
+mpirun -np 20 ./ucvm2mesh-mpi -f ucvm2mesh_mpi20.conf
 
-
+echo "Job done"
+exit 0

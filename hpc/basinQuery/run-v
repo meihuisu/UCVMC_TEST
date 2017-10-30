@@ -1,3 +1,3 @@
 
-qsub -A lc_pjm basin_query1.pbs
+qsub -A lc_pjm basin_query.pbs
 
