@@ -4,6 +4,9 @@ GOAL: Evaluate the result from basin_query and basin_query_mpi calls
      a) unify the calling api for basin_query and basin_query_mpi
      b) add capability to dump the intermediate data for verification
    
+note:
+  a) basin_query_mpi's -l option is actually taking lon/lat 
+     while basin_query's input format is taking 'lat lon' lines
 
 old version,
 
@@ -26,3 +29,16 @@ ucvm-basin/bin/basinpbs.pbs:mpirun -np $NP -machinefile $PBS_NODEFILE
 /home/scec-00/davidgil/ucvm-basin/bin/basin_query_mpi -b /scratch/cvmh1191.out 
 -m cvmh -f /home/scec-00/davidgil/ucvm-basin/conf/ucvm.conf -d 10000 -i 10 
 -v 1000 -l 31,-121 -s 0.005 -x 1701 -y 1101 
+
+from source,
+        printf("\t-b Binary output to file.\n");
+        printf("\t-h This help message\n");
+        printf("\t-f Configuration file. Default is ./ucvm.conf.\n");
+        printf("\t-i Interval between query points along z-axis (m, default is 20.0)\n");
+        printf("\t-m Comma delimited list of crustal/GTL models to query in order\n");
+        printf("\t-v Vs threshold (m/s, default is 1000.0).\n");
+        printf("\t-l Bottom-left lat,lon separated by comma.\n");
+        printf("\t-s Grid spacing.\n");
+        printf("\t-x Number of longitude points.\n");
+        printf("\t-y Number of latitude points.\n");
+

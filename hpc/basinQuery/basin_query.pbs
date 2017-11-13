@@ -29,7 +29,7 @@ export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/basinQuery
 
 cd /scratch
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
-cp ${UCVM_INSTALL_PATH}/tests/test_latlonsonly.txt .
+cp ${TEST_SRC_PATH}/test_latlonsonly.txt .
 cp ${UCVM_INSTALL_PATH}/bin/basin_query .
 
 ./basin_query -f ucvm.conf -m cvmsi -v 2500 < test_latlonsonly.txt >& basin_query.result
