@@ -3,10 +3,29 @@ GOAL: Evaluate the result from basin_query and basin_query_mpi calls
   subgoal,
      a) unify the calling api for basin_query and basin_query_mpi
      b) add capability to dump the intermediate data for verification
+     c)
    
 note:
   a) basin_query_mpi's -l option is actually taking lon/lat 
      while basin_query's input format is taking 'lat lon' lines
+
+
+For the depth test:
+
+  CCA: use minLat = 35.5, 
+           minLon = -120.5,
+           nx = 1551,
+           ny = 1201,
+           gridSpacing = 0.005 dg,
+           i = 20,
+           z = 2500, and 1000
+
+---
+
+CCA: [minLat = 33.35, minLon = -123.0, nx = 1551, ny = 1201, gridSpacing = 0.005 degrees]
+CVM-S4.26 and CVM-S4.26-M01: [minLat = 31.0, minLon = -121.0, nx = 1701, ny = 1101, gridSpacing = 0.005 degrees]
+Output format for the basin data sets is a binary regular mesh format with separate files for Z1.0 and Z2.5 in meters
+
 
 old version,
 

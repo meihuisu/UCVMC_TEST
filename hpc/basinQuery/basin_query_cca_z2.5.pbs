@@ -1,0 +1,44 @@
+#!/bin/bash
+#PPPBS -q scec
+#PBS -l arch=x86_64,walltime=0:30:00,nodes=1:ppn=1
+#PBS -V
+#PBS -A lc_pjm 
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_cca_z2.5.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_cca_z2.5.out
+
+export MX_RCACHE=0
+
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+export TEST_TOP_PATH=/home/scec-00/mei/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/basinQuery
+
+###############################################################################
+
+cd /scratch
+cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+cp ${TEST_SRC_PATH}/test_latlonsonly.txt .
+cp ${UCVM_INSTALL_PATH}/bin/basin_query .
+
+./basin_query -f ucvm.conf -i 20 -m cca -v 2500 < test_latlonsonly.txt >& basin_query_cca_z2.5.result
+
+mv basin_query_cca_z2.5.result ${TEST_TOP_PATH}/RESULT
+
+echo "Jobs done"
+exit 0
+
+
+

@@ -1,20 +1,15 @@
 #!/bin/bash
 #PPPBS -q scec
-#PBS -l arch=x86_64,walltime=00:30:00,nodes=2:ppn=1
+#PBS -l arch=x86_64,walltime=0:30:00,nodes=1:ppn=1
 #PBS -V
-#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi2.err
-#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi2.out
+#PBS -A lc_pjm 
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_cvms5_z2.5.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_cvms5_z2.5.out
 
 export MX_RCACHE=0
 
 ## setup mpi environment
 source /usr/usc/openmpi/default/setup.sh
-
-## enable some mpi debug output
-ompi_info --param mpi all --level 9
-
-## prepend anaconda's bin, including python2.7
-export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
 
 ## prepend velocity model's lib
 export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
@@ -34,11 +29,16 @@ export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/basinQuery
 ###############################################################################
 
 cd /scratch
-cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+cp ${TEST_SRC_PATH}/test_latlonsonly.txt .
+cp ${UCVM_INSTALL_PATH}/bin/basin_query .
 
-mpirun -np 2 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi2.result -f ucvm.conf -m cvms -i 20 -v 1000 -l 34,-118 -s 0.01 -x 101 -y 101
+./basin_query -f ucvm.conf -i 20 -m cvmsi -v 2500 < test_latlonsonly.txt >& basin_query_cvms5_z2.5.result
+
+mv basin_query_cvms5_z2.5.result ${TEST_TOP_PATH}/RESULT
 
 echo "Jobs done"
 exit 0
+
+
 

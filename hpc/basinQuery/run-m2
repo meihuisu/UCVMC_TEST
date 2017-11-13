@@ -1,3 +1,0 @@
-
-qsub -V -A lc_pjm  basin_query_mpi2.pbs
-

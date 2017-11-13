@@ -2,8 +2,9 @@
 #PPPBS -q scec
 #PBS -l arch=x86_64,walltime=0:30:00,nodes=1:ppn=1
 #PBS -V
-#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query.err
-#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query.out
+#PBS -A lc_pjm 
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_cvms5_z2.5.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_cvms5_z2.5.out
 
 export MX_RCACHE=0
 
@@ -32,9 +33,9 @@ cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 cp ${TEST_SRC_PATH}/test_latlonsonly.txt .
 cp ${UCVM_INSTALL_PATH}/bin/basin_query .
 
-./basin_query -f ucvm.conf -m cvmsi -v 2500 < test_latlonsonly.txt >& basin_query.result
+./basin_query -f ucvm.conf -i 20 -m cvmsi -v 2500 < test_latlonsonly.txt >& basin_query_cvms5_z2.5.result
 
-mv basin_query.result ${TEST_TOP_PATH}/RESULT
+mv basin_query_cvms5_z2.5.result ${TEST_TOP_PATH}/RESULT
 
 echo "Jobs done"
 exit 0
