@@ -12,14 +12,18 @@ note:
 
 For the depth test:
 
-  CCA: use minLat = 35.5, 
-           minLon = -120.5,
+  CCA: use minLat = 33.35, 
+           minLon = -123.0,
            nx = 1551,
            ny = 1201,
            gridSpacing = 0.005 dg,
            i = 20,
            z = 2500, and 1000
 
+  1551x0.005=7.755
+  1201x0.005=6.005
+  lat ranges from 33.35 to 39.355 (y-axis)
+  lon ranges from -123 to -115.245 (x-axis)
 ---
 
 CCA: [minLat = 33.35, minLon = -123.0, nx = 1551, ny = 1201, gridSpacing = 0.005 degrees]
