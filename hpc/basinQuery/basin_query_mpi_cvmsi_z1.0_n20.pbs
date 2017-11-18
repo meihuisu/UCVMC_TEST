@@ -38,7 +38,7 @@ cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 
 
-//CVM-S4.26 and CVM-S4.26-M01: [minLat = 31.0, minLon = -121.0, nx = 1701, ny = 1101, gridSpacing = 0.005 degrees]
+#CVM-S4.26 and CVM-S4.26-M01: [minLat = 31.0, minLon = -121.0, nx = 1701, ny = 1101, gridSpacing = 0.005 degrees]
 
 mpirun -np 20 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi_cvmsi_z1.0_n20_first.result,${TEST_TOP_PATH}/RESULT/basin_query_mpi_cvmsi_z1.0_n20_second.result -o ${TEST_TOP_PATH}/RESULT/basin_query_mpi_cvmsi_z1.0_n20.result -f ucvm.conf -m cvmsi -i 20 -v 1000 -l 31.0,-121.0 -s 0.005 -x 1701 -y 1101 
 
