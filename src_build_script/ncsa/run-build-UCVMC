@@ -1,4 +1,5 @@
 #!/bin/bash
+# for NCSA's blue waters => h2ologin.ncsa.illinois.edu
 
 ## setup environment on blue water ofr ucvmc
 module unload darshan
