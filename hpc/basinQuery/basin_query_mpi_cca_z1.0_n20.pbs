@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l arch=x86_64,walltime=04:00:00,nodes=10:ppn=2
+#PBS -l arch=x86_64,walltime=08:00:00,nodes=10:ppn=2
 #PBS -V
 #PBS -A lc_pjm
 #PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.err
@@ -40,6 +40,8 @@ cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 #CCA: [minLat = 33.35, minLon = -123.0, nx = 1551, ny = 1201, gridSpacing = 0.005 degrees]
 
 mpirun -np 20 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z1.0_n20_first.result,${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z1.0_n20_second.result -o ${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z1.0_n20.result -f ucvm.conf -m cca -i 20 -v 1000 -l 33.35,-123.0 -s 0.005 -x 1551 -y 1201 
+
+#mpirun -np 20 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z1.0_n20_first.result,${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z1.0_n20_second.result -f ucvm.conf -m cca -i 20 -v 1000 -l 33.35,-123.0 -s 0.005 -x 1551 -y 1201 
 
 echo "Jobs done"
 exit 0
