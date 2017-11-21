@@ -1,0 +1,23 @@
+Difference in setting up pbs scripts for different sites
+
+a) skip the arch specification, adding xe to nodes 
+     HPC => #PBS -l arch=x86_6,walltime=00:10:00,nodes=10:ppn=2
+     bw  => #PBS -l walltime=02:00:00,nodes=10:ppn=2:xe
+
+b) working directory
+     HPC => cd /scratch
+     bw  => cd $PBS_O_WORKDIR
+
+c) invoking call,
+    HPC =>  mpirun -np 20 ./basin_query_mpi ...
+    bw  =>  aprun -n 20 ./basin_query_mpi ...
+
+d) mpi version used,
+    HPC => source /usr/usc/openmpi/default/setup.sh
+    bw  => no need to specify but the environment setup is
+
+    module unload darshan
+    module unload iobuf
+    module unload PrgEnv-cray
+module load PrgEnv-gnu
+
