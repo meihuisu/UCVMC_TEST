@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l walltime=08:00:00,nodes=10:ppn=2:xe
+#PBS -l walltime=01:00:00,nodes=10:ppn=2:xe
 #PBS -A baln
 #PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.err
 #PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.out
