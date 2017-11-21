@@ -35,8 +35,6 @@ git clone https://github.com/meihuisu/UCVMC.git
 #git clone https://github.com/SCECcode/UCVMC.git
 
 cd $UCVM_SRC_PATH/largefiles; ./get_large_files.py
-cp /home/scec-00/mei/cca.tar.gz $UCVM_SRC_PATH/largefiles
-cp /home/scec-00/mei/cca.tar.gz.md5 $UCVM_SRC_PATH/largefiles
 cd $UCVM_SRC_PATH/largefiles; ./check_large_files.py
 cd $UCVM_SRC_PATH/largefiles; ./stage_large_files.py
 

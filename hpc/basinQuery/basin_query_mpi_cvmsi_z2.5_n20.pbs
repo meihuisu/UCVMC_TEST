@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l arch=x86_64,walltime=04:00:00,nodes=10:ppn=2
+#PBS -l arch=x86_64,walltime=02:00:00,nodes=10:ppn=2
 #PBS -V
 #PBS -A lc_pjm
 #PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvmsi_z2.5_n20.err
