@@ -39,7 +39,7 @@ cd $UCVM_SRC_PATH/largefiles; ./check_large_files.py
 cd $UCVM_SRC_PATH/largefiles; ./stage_large_files.py
 
 cd $UCVM_SRC_PATH
-./ucvm_setup.py << EOF &>> ucvm_setup_install.log
+./ucvm_setup.py << EOF &> ucvm_setup_install.log
 $UCVM_INSTALL_PATH
 yes
 yes
