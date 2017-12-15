@@ -1,0 +1,39 @@
+#!/bin/bash
+#PBS -l walltime=0:10:00,nodes=1:ppn=1:xe
+#PBS -A baln
+#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/review_basin_query.err
+#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/review_basin_query.out
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/projects/sciteam/baln/meisu/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+export TEST_TOP_PATH=/u/sciteam/meisu/scratch/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/ncsa/reviewStudy
+
+###############################################################################
+
+cd $PBS_O_WORKDIR
+cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+cp ${TEST_SRC_PATH}/review_latlonsonly.txt .
+cp ${UCVM_INSTALL_PATH}/bin/basin_query .
+
+echo $PBS_NODEFILE
+
+aprun -n 1 ./basin_query -f ucvm.conf -m cvms5 -v 1000 < review_latlonsonly.txt >& review_basin_query.result
+
+mv review_basin_query.result ${TEST_TOP_PATH}/RESULT
+
+echo "Jobs done"
+exit 0
+
+
+

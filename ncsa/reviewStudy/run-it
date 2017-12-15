@@ -1,0 +1,1 @@
+/projects/sciteam/baln/meisu/TARGET_UCVMC/install/bin/basin_query -f /projects/sciteam/baln/meisu/TARGET_UCVMC/install/conf/ucvm.conf -m cvms5 -v 2500 < review_latlonsonly.txt >& review_basin_query.result

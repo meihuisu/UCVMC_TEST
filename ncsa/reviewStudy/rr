@@ -1,0 +1,11 @@
+
+export TEST_UCVMC_TARGET=/projects/sciteam/baln/meisu/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+export TEST_TOP_PATH=/u/sciteam/meisu/scratch/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/ncsa/reviewStudy
+
+###############################################################################
+
+/projects/sciteam/baln/meisu/TARGET_UCVMC/install/bin/basin_query -f /projects/sciteam/baln/meisu/TARGET_UCVMC/install/conf/ucvm.conf -m cvms5 -v 1000 < review_latlonsonly.txt >& review_basin_query.result
