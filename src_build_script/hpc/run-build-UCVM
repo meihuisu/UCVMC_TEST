@@ -1,0 +1,56 @@
+#!/bin/bash
+## USC hpc => hpc-login3.usc.edu
+
+## setup python environment
+source /usr/usc/python/3.5.2/setup.sh
+
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
+
+## prepend velocity model's lib
+export TEST_UCVM_TARGET=/home/scec-00/mei/TARGET_UCVM
+export UCVM_SRC_PATH=$TEST_UCVM_TARGET/UCVM
+export UCVM_INSTALL_PATH=$TEST_UCVM_TARGET/install
+
+## setup python script
+if [ $PYTHONPATH ] ; then 
+  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
+  else
+     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
+fi
+#echo $PYTHONPATH
+
+## prepend anaconda's bin, including python2.7
+export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
+
+rm -rf $TEST_UCVM_TARGET 
+mkdir $TEST_UCVM_TARGET
+
+cd $TEST_UCVM_TARGET
+#git clone https://github.com/meihuisu/UCVM.git
+git clone https://github.com/SCECcode/UCVM.git
+
+pyvenv-3.5 $UCVM_INSTALL_PATH
+
+cd $UCVM_SRC_PATH; source bin/activate.csh
+cd $UCVM_SRC_PATH; ./ucvm_setup
+
+cd $UCVM_SRC_PATH; ./ucvm_setup << EOF &> ucvm_setup_install.log
+$UCVM_INSTALL_PATH
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+EOF
+
+cd $UCVM_SRC_PATH; make check
+
+echo "..EXITING.."
+exit
