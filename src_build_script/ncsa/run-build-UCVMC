@@ -51,6 +51,7 @@ yes
 yes
 yes
 yes
+yes
 EOF
 
 cd $UCVM_SRC_PATH; make check
