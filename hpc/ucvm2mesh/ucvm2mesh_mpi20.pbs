@@ -1,7 +1,7 @@
 #!/bin/bash
-#PPPBS -q scec
-#PBS -l arch=x86_64,pmem=2000mb,pvmem=3000mb,walltime=00:30:00,nodes=5:ppn=4
+#PBS -l arch=x86_64,walltime=00:30:00,nodes=5:ppn=4
 #PBS -V
+#PBS -A lc_pjm
 #PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh_mpi20.err
 #PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh_mpi20.out
 

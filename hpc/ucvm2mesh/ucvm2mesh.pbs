@@ -1,7 +1,7 @@
 #!/bin/bash
-#PPPBS -q scec
-#PBS -l arch=x86_64,walltime=0:30:00,nodes=1:ppn=1
+#PBS -l arch=x86_64,walltime=00:30:00,nodes=1:ppn=1
 #PBS -V
+#PBS -A lc_pjm
 #PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.err
 #PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.out
 
@@ -29,8 +29,10 @@ export TEST_SRC_PATH=/home/scec-00/mei/UCVM_REVIEW/UCVMC_TEST/hpc/ucvm2mesh
 cd /scratch
 cp ${TEST_SRC_PATH}/ucvm2mesh.conf .
 cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh .
+cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
 
 ./ucvm2mesh -f ucvm2mesh.conf
+#mpirun -np 1 ./ucvm2mesh-mpi -f ucvm2mesh_mpi40.conf
 
 echo "Job done"
 exit 0

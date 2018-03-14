@@ -32,8 +32,7 @@ git clone https://github.com/SCECcode/UCVM.git
 
 pyvenv-3.5 $UCVM_INSTALL_PATH
 
-cd $UCVM_SRC_PATH; source bin/activate.csh
-cd $UCVM_SRC_PATH; ./ucvm_setup
+cd $UCVM_INSTALL_PATH; source bin/activate
 
 cd $UCVM_SRC_PATH; ./ucvm_setup << EOF &> ucvm_setup_install.log
 $UCVM_INSTALL_PATH
@@ -49,8 +48,6 @@ yes
 yes
 yes
 EOF
-
-cd $UCVM_SRC_PATH; make check
 
 echo "..EXITING.."
 exit
