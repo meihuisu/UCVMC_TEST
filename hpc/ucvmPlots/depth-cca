@@ -1,0 +1,70 @@
+#!/bin/bash
+
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
+
+## prepend anaconda's bin, including python2.7
+export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
+
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+## setup python script
+if [ $PYTHONPATH ] ; then 
+  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
+  else
+     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
+fi
+#echo $PYTHONPATH
+
+
+
+
+###############################################################################
+# cross section call
+
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 34.5,-118.47 -u 34.5,-118.75 -h 100 -v 10 -d vs -c cvmsi -a s -s 0 -e 5000
+
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 34.5,-118.60 -u 34.5,-118.70 -h 100 -v 10 -d vs -c cca -a s -s 0 -e 5000 -o cross_section_118.6x_34.5.png
+
+#./plot_cross_section.py -b 34.5,-118.60 -u 34.5,-118.70 -h 100 -v 10 -d vs -c cca -a s -s 0 -e 5000 
+
+#ret_val = get_user_opts({ "s,startingpoint":"lat1,lon1", \
+##			"e,endingdepth":"ending_depth", \
+##			"d,datatype":"data_type", \
+#			"c,cvm":"cvm_selected", \
+#			"v,vertical":"vertical_spacing", \
+#			"o,outfile":"outfile"})
+
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca.png
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs,vp,density -g 2500 -e 5000 -c cvms -v 20 -o depth_cvms.png
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cca -v 20 -o depth_cca.png
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cvms -v 20 -o depth_cvms.png
+
+
+./plot_depth_profile.py -s 34.845,-119.25 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_34_845x119_25.png
+./plot_depth_profile.py -s 35.135,-119.16 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_35_135x119_16.png
+
+./plot_depth_profile.py -s 35.245,-119.46 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_35_245x119_46.png
+
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cca -v 20 -o depth_cca.png
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cvms -v 20 -o depth_cvms.png
+
+
+
+
+
+
+
+
+

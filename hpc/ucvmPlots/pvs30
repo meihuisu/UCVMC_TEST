@@ -1,0 +1,27 @@
+
+#    print "Generates a Vs30 map or text file given two bounding latitude and longitude "
+#    print "co-ordinates, the CVM to plot, and a couple of other settings."
+#    print "\nValid arguments:"
+#    print "\t-b, --bottomleft: bottom-left latitude, longitude (e.g. 34,-118)"
+#    print "\t-u, --upperright: upper-right latitude, longitude (e.g. 35,-117)"
+#    print "\t-s, --spacing: grid spacing in degrees (typically 0.01)"
+#    print "\t-c, --cvm: one of the installed community velocity models"
+#    print "\t-a, --scale: color scale, either 's' for smooth or 'd' for discretized, without quotes"
+#    print "UCVM %s\n" % VERSION
+
+
+#ret_val = get_user_opts({"b,bottomleft":"lat1,lon1",
+#                         "u,upperright":"lat2,lon2", 
+#                         "s,spacing":"spacing",
+#                         "c,cvm":"cvm_selected",
+#                         "a,scale": "color"})
+
+
+./plot_vs30_map.py -b 34.0,-118.0 -u 35.0,-117.0 -c cvms -s 0.01 -a s -o vs30_map.png
+
+
+
+
+
+
+

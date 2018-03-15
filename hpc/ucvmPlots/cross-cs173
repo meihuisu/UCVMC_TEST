@@ -1,0 +1,57 @@
+#!/bin/bash
+
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
+
+## prepend anaconda's bin, including python2.7
+export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
+
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+## setup python script
+if [ $PYTHONPATH ] ; then 
+  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
+  else
+     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
+fi
+#echo $PYTHONPATH
+
+
+
+
+###############################################################################
+# cross section call
+
+
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 38,-123.2 -u 38,-122 -h 100 -v 10 -d vs -c cs173 -a d -s 0 -e 50000 -o cross_123_2x_38_cs173.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 34.5,-118.70 -u 34.5,-118.50 -h 100 -v 10 -d vs -c cs173 -a d -s 0 -e 50000 -o cross_118.7x_34.5_cs173.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 34.5,-119 -u 34.5,-118.50 -h 100 -v 10 -d vs -c cs173 -a d -s 0 -e 54000 -o cross_119x_34.5_cs173.png
+#####################
+
+#X=1000: (32.550700, -115.409380) to (38.446980, -126.695380) 
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 32.550700,-115.409380 -u 38.446980,-126.695380 -h 1000 -v 100 -d vs -c cs173 -a s -s 0 -e 50000 -o cs173_cross_x1.png
+
+#X=2000: (33.824270, -114.301790) to (39.813370, -125.716460)
+cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 33.824270,-114.301790 -u 39.813370,-125.716460 -h 1000 -v 100 -d vs -c cs173 -a s -s 0 -e 50000 -o cs173_cross_x2.png
+
+#Y=1740: (32.824810, -119.141480) to (36.959180, -115.655030)
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 32.824810,-119.141480 -u 36.959180,-115.655030 -h 1000 -v 100 -d vs -c cs173 -a s -s 0 -e 50000 -o cs173_cross_y1.png
+
+#Y=3480: (34.320700, -121.888010) to (38.531550, -118.487980) 
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 34.320700,-121.888010 -u 38.531550,-118.487980 -h 1000 -v 100 -d vs -c cs173 -a s -s 0 -e 50000 -o cs173_cross_y2.png
+
+#Y=5220: (35.744050, -124.726900) to (40.029510, -121.442660) 
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_cross_section.py -b 35.744050,-124.726900 -u 40.029510,-121.442660 -h 1000 -v 100 -d vs -c cs173 -a s -s 0 -e 50000 -o cs173_cross_y3.png
+
+

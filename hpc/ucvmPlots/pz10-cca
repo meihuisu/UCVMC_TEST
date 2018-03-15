@@ -1,0 +1,13 @@
+
+#-b 33.349998,-123.000000 -u 39.355000,-115.245003 -c cca -s 0.005000 -x 1551 -y 1201
+
+./plot_z10_map.py -f cca_z1.first -o cca_z1_first_map.png -e "(first crossing)" -b 33.349998,-123.000000 -u 39.355000,-115.245003 -c cca -s 0.005000 -x 1551 -y 1201
+
+./plot_z10_map.py -f cca_z1.firstOrSecond -o cca_z1_firstOrSecond_map.png -e "(first or second crossing)" -b 33.349998,-123.000000 -u 39.355000,-115.245003 -c cca -s 0.005000 -x 1551 -y 1201
+
+./plot_z10_map.py -f cca_z1.last -o cca_z1_last_map.png -e "(last crossing)" -b 33.349998,-123.000000 -u 39.355000,-115.245003 -c cca -s 0.005000 -x 1551 -y 1201
+
+./plot_z10_map.py -f cca_z1.secondOnly -o cca_z1_secondOnly_map.png -e "(second only crossing)" -b 33.349998,-123.000000 -u 39.355000,-115.245003 -c cca -s 0.005000 -x 1551 -y 1201
+
+./plot_z10_map.py -f cca_z1.threeLast -o cca_z1_threeLast_map.png -e "(third or last crossing)" -b 33.349998,-123.000000 -u 39.355000,-115.245003 -c cca -s 0.005000 -x 1551 -y 1201
+

@@ -1,0 +1,33 @@
+
+#    print "Plots a cross-section given two latitude, longitude points, a depth,"
+#    print "the CVM to plot, and a couple of other settings."
+#    print "\nValid arguments:"
+#    print "\t-s, --starting: starting depth for cross-section (meters)"
+#    print "\t-e, --ending: ending depth for cross-section (meters)"
+#    print "\t-h, --horizontal: horizontal spacing for cross-section (meters)"
+#    print "\t-v, --vertical: vertical spacing for cross-section (meters)"
+#    print "\t-d, --datatype: either 'vs', 'vp', 'rho', or 'poisson', without quotation marks"
+#    print "\t-c, --cvm: one of the installed CVMs"
+#    print "\t-a, --scale: color scale, either 's' for smooth or 'd' for discretized, without quotes"
+#    print "\t-o, --origin: origin latitude, longitude from which to start plot (e.g. 34,-118)"
+#    print "\t-f, --final: destination latitude, longitude to end plot (e.g. 35,-117)"
+#    print "UCVM %s\n" % VERSION
+
+
+#ret_val = get_user_opts({"b,bottomleft":"lat1,lon1", \
+#                        "u,upperright":"lat2,lon2", \
+#                        "s,starting":"starting_depth", \
+#                        "e,ending":"ending_depth", \
+#                        "d,datatype":"data_type", \
+#                        "c,cvm":"cvm_selected", \
+#                        "h,horizonatal":"horizontal_spacing", \
+#                        "v,vertical":"vertical_spacing", \
+#                        "a,scale": "color"})
+
+#./plot_cross_section.py -b 34.0,-118.75 -u 34.0,-117.75 -h 100 -v 10 -d vs -c cvms -a s -s 0 -e 4000
+
+./plot_cross_section.py -b 34.0,-118.0 -u 35.0,-117.0 -h 100 -v 10 -d vs -c cvms -a d -s 0 -e 4000 -o cross.png
+
+
+
+

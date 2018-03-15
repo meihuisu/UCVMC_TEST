@@ -1,0 +1,12 @@
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z2.5_n20.first cvms5_z2.5.first
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z2.5_n20.last cvms5_z2.5.last
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z2.5_n20.firstOrSecond cvms5_z2.5.firstOrSecond
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z2.5_n20.secondOnly cvms5_z2.5.secondOnly
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z2.5_n20.threeLast cvms5_z2.5.threeLast
+
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z1.0_n20.first cvms5_z1.first
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z1.0_n20.last cvms5_z1.last
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z1.0_n20.firstOrSecond cvms5_z1.firstOrSecond
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z1.0_n20.secondOnly cvms5_z1.secondOnly
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cvms5_z1.0_n20.threeLast cvms5_z1.threeLast
+

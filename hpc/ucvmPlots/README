@@ -1,0 +1,9 @@
+
+link or cp the directory to a ucvmc's install directory's
+
+install/utilities
+
+to display the png from hpc node back to mac
+on mac, xhost +
+on remote side run -> display target.png
+can test with xclock first to make sure x link up is working

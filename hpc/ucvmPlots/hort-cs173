@@ -1,0 +1,60 @@
+#!/bin/bash
+
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
+
+## prepend anaconda's bin, including python2.7
+export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
+
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+## setup python script
+if [ $PYTHONPATH ] ; then 
+  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
+  else
+     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
+fi
+#echo $PYTHONPATH
+
+
+
+
+###############################################################################
+# horizontal section call
+
+
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-120 -u 35,-117 -e 0 -d vs -c cca -a s -s 0.01 -o horizontal_120x_33_vs_cca.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-120 -u 35,-117 -e 0 -d vs -c cvms -a s -s 0.01 -o horizontal_120x_33_vs_cvms.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-120 -u 35,-117 -e 0 -d vs -c cvmh -a s -s 0.01 -o horizontal_120x_33_vs_cvmh.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-120 -u 35,-117 -e 0 -d vs -c cvmsi -a s -s 0.01 -o horizontal_120x_33_vs_cvmsi.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-120 -u 35,-117 -e 0 -d vs -c cvms5 -a s -s 0.01 -o horizontal_120x_33_vs_cvms5.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-120 -u 35,-117 -e 0 -d vs -c cs173 -a s -s 0.01 -o horizontal_120x_33_vs_cs173.png
+
+## larget swipe
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-123 -u 37,-117 -e 0 -d vs -c cs173 -a s -s 0.01 -o horizontal_123x_33_vs_cs173.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-123 -u 37,-117 -e 0 -d vs -c cca -a s -s 0.01 -o horizontal_123x_33_vs_cca.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-123 -u 37,-117 -e 0 -d vs -c 1d -a s -s 0.01 -o horizontal_123x_33_vs_1d.png
+#cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 33,-123 -u 37,-117 -e 0 -d vs -c cca,1d -a s -s 0.01 -o horizontal_123x_33_vs_cca_1d.png
+
+#########
+cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173 -a s -s 0.05 -e 0 -o cs173_hort_0.png
+
+cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173 -a s -s 0.05 -e 1050 -o cs173_hort_1050.png
+
+cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173 -a s -s 0.05 -e 9975 -o cs173_hort_9975.png
+
+cd ${UCVM_INSTALL_PATH}/utilities; ./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173 -a s -s 0.05 -e 19950 -o cs173_hort_19950.png
+
+
+

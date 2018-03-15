@@ -1,0 +1,29 @@
+
+#    print "Generates a Z2.5 map or text file given two bounding latitude and longitude "
+#    print "co-ordinates, the CVM to plot, and a couple of other settings."
+#    print "\nValid arguments:"
+#    print "\t-b, --bottomleft: bottom-left latitude, longitude (e.g. 34,-118)"
+#    print "\t-u, --upperright: upper-right latitude, longitude (e.g. 35,-117)"
+#    print "\t-s, --spacing: grid spacing in degrees (typically 0.01)"
+#    print "\t-z, --interval: Z-interval, in meters, for Z%.1f to be queried (lower value means more precision)"
+#    print "\t-c, --cvm: one of the installed CVMs"
+#    print "UCVM %s\n" % VERSION
+
+
+#ret_val = get_user_opts({"b,bottomleft":"lat1,lon1", 
+#                         "u,upperright":"lat2,lon2",
+#                         "s,spacing":"spacing", 
+#                         "c,cvm":"cvm_selected"})
+
+
+#./plot_z25_map.py -b 34.13,-119.46 -u 34.18,-119.41 -c cvms5 -s 0.005 -o z25_map.png
+
+#-122.25000 30.000
+#-113.0  38.5
+
+time ./plot_z25_map.py -b 30.0,-122.25 -u 38.5,-113.0 -c cvms5 -s 0.005 -f cvms5_z2.5.first -o cvms5_z2.5_first_map.png
+time ./plot_z25_map.py -b 30.0,-122.25 -u 38.5,-113.0 -c cvms5 -s 0.005 -f cvms5_z2.5.firstOrSecond -o cvms5_z2.5_firstOrSecond_map.png
+time ./plot_z25_map.py -b 30.0,-122.25 -u 38.5,-113.0 -c cvms5 -s 0.005 -f cvms5_z2.5.last -o cvms5_z2.5_last_map.png
+time ./plot_z25_map.py -b 30.0,-122.25 -u 38.5,-113.0 -c cvms5 -s 0.005 -f cvms5_z2.5.threeLast -o cvms5_z2.5_threeLast_map.png
+time ./plot_z25_map.py -b 30.0,-122.25 -u 38.5,-113.0 -c cvms5 -s 0.005 -f cvms5_z2.5.secondOnly -o cvms5_z2.5_secondOnly_map.png
+

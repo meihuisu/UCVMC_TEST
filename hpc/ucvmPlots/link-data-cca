@@ -1,0 +1,9 @@
+
+ln -s /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.first cca_z1.first
+ln -s /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.last cca_z1.last
+ln -s /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.second cca_z1.second
+
+ln -s /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.bare cca_z2.5.bare
+ln -s /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.first cca_z2.5.first
+ln -s /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.last cca_z2.5.last
+ln -s /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.second cca_z2.5.second

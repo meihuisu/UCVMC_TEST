@@ -1,0 +1,28 @@
+
+#    print "Plots a horizontal slice given two bounding latitude and longitude co-ordinates,"
+#    print "the CVM to plot, and a couple of other settings."
+#    print "\nValid arguments:"
+#    print "\t-b, --bottomleft: bottom-left latitude, longitude (e.g. 34,-118)"
+#    print "\t-u, --upperright: upper-right latitude, longitude (e.g. 35,-117)"
+#    print "\t-s, --spacing: grid spacing in degrees (typically 0.01)"
+#    print "\t-e, --depth: depth for horizontal slice in meters (e.g. 1000)"
+#    print "\t-d, --datatype: either 'vs', 'vp', 'rho', or 'poisson', without quotation marks"
+#    print "\t-c, --cvm: one of the installed velocity models"
+#    print "\t-a, --scale: color scale, either 's' for smooth or 'd' for discretized, without quotes"
+#    print "UCVM %s\n" % VERSION
+
+
+#ret_val = get_user_opts({"b,bottomleft":"lat1,lon1",
+#                         "u,upperright":"lat2,lon2",
+#                         "s,spacing":"spacing",
+#                          "e,depth":"depth",
+#                         "d,datatype":"data_type",
+#                         "c,cvm":"cvm_selected", 
+#                         "a,scale": "color"})
+
+./plot_horizontal_slice.py -b 34.0,-118.0 -u 35.0,-117.0 -d vs -c cvms -a s -s 0.01 -e 1000 -o horizontal.png 
+
+
+
+
+
