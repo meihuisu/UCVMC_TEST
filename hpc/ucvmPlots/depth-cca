@@ -52,14 +52,15 @@ fi
 #./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cvms -v 20 -o depth_cvms.png
 
 
-./plot_depth_profile.py -s 34.845,-119.25 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_34_845x119_25.png
-./plot_depth_profile.py -s 35.135,-119.16 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_35_135x119_16.png
+#./plot_depth_profile.py -s 34.845,-119.25 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_34_845x119_25.png
+#./plot_depth_profile.py -s 35.135,-119.16 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_35_135x119_16.png
+#./plot_depth_profile.py -s 35.245,-119.46 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_35_245x119_46.png
 
-./plot_depth_profile.py -s 35.245,-119.46 -d vs,vp,density -g 2500 -e 5000 -c cca -v 20 -o depth_cca_35_245x119_46.png
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cca -v 20 -o depth_cca_on.png
+#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cvms5 -v 20 -o depth_cvms5_on.png
 
-#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cca -v 20 -o depth_cca.png
-#./plot_depth_profile.py -s 34.5,-118.67 -d vs -g 2500 -e 5000 -c cvms -v 20 -o depth_cvms.png
-
+./plot_depth_profile.py -s 36.94,-119.61 -d vs -g 2500 -e 5000 -c cca -v 20 -o depth_cca_off.png
+./plot_depth_profile.py -s 36.94,-119.61 -d vs -g 2500 -e 5000 -c cvms5 -v 20 -o depth_cvms5_off.png
 
 
 

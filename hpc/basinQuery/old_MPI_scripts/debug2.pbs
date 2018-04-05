@@ -1,0 +1,46 @@
+#!/bin/bash
+#PBS -l arch=x86_64,walltime=00:20:00,nodes=10:ppn=2
+#PBS -V
+#PBS -A lc_pjm
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/debug2.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/debug2.out
+
+export MX_RCACHE=0
+
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
+
+## enable some mpi debug output
+#ompi_info --param mpi all --level 9
+
+## prepend anaconda's bin, including python2.7
+export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+export TEST_TOP_PATH=/home/scec-00/mei/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/reviewStudy
+
+###############################################################################
+
+cd /scratch
+cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
+cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+
+#CCA: [minLat = 33.35, minLon = -123.0, nx = 1551, ny = 1201, gridSpacing = 0.005 degrees]
+
+mpirun -np 20 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z2.5_n20.first,${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z2.5_n20.firstOrSecond,${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z2.5_n20.last,${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z2.5_n20.secondOnly,${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z2.5_n20.threeLast -o ${TEST_TOP_PATH}/RESULT/basin_query_mpi_cca_z2.5_n20x.result -f ucvm.conf -m cca -i 20 -v 2500 -l 33.5,-120.0 -s 0.005 -x 100 -y 100 
+
+echo "Jobs done"
+exit 0
+
