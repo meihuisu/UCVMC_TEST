@@ -1,32 +1,5 @@
 #!/bin/bash
 
-## setup mpi environment
-source /usr/usc/openmpi/default/setup.sh
-
-## prepend anaconda's bin, including python2.7
-export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
-
-
-## prepend velocity model's lib
-export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
-export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
-export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
-
-if [ $LD_LIBRARY_PATH ] ; then
-  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
-  else
-    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
-fi
-#echo $LD_LIBRARY_PATH
-
-## setup python script
-if [ $PYTHONPATH ] ; then 
-  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
-  else
-     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
-fi
-#echo $PYTHONPATH
-
 #./plot_depth_profile.py -s 35.5,-119.125 -d vs,vp,density -g 2500 -e 5000 -c cs173 -v 20 -o depth_cs173_35_5x119_125x.png
 
 #./plot_depth_profile.py -s 34.09986,-118.75974 -d vs,vp,density -g 2500 -e 5000 -c cs173 -v 20 -o depth_cs173_34_09986x118_75974x.png
