@@ -1,28 +1,28 @@
-#
-#
-##    Y index=1600: (38.929900, -124.363400) to (41.030000, -119.880200)
-##    Y index=3600: (37.413200, -123.140900) to (39.470700, -118.713500)
-##    Y index=5600: (35.884300, -121.967300) to (37.900400, -117.598200)
-##    Y index=7600: (34.344500, -120.838200) to (36.319900, -116.529600)
-##    Y index=9600: (32.794700, -119.750000) to (34.730300, -115.503600)
-#
-./plot_cross_section.py -b 38.9299,-124.3634 -u 41.03,-119.8802 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_1600.png
-./plot_cross_section.py -b 37.4132,-123.1409 -u 39.4707,-118.7135 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_3600.png
-./plot_cross_section.py -b 35.8843,-121.9673 -u 37.9004,-117.5982 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_5600.png
-./plot_cross_section.py -b 34.3445,-120.8382 -u 36.3199,-116.5296 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_7600.png
-./plot_cross_section.py -b 32.7947,-119.75 -u 34.7303,-115.5036 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_9600.png
-#
-#./plot_cross_section.py -b 40.8665,-123.9003 -u 32.2078,-117.5297 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_x_1500.png
-#./plot_cross_section.py -b 41.5799,-122.3885 -u 32.8442,-116.1279 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_x_3000.png
-#
-#
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 0 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_0.png
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 100 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_100.png
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 1000 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_1000.png
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 10000 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_10000.png
-#
-#
-#
-./plot_depth_profile.py -s 38.3,-118 -d vs,vp,density -g 0 -e 10000 -c cca -v 10 -o on-depth_38_3x118_cca.png
-#
-./plot_depth_profile.py -s 35.3,-115.5 -d vs,vp,density -g 0 -e 10000 -c cvms5 -v 10 -o on-depth_35_3x115_5_cvms5.png
+##
+##
+###    Y index=1600: (38.929900, -124.363400) to (41.030000, -119.880200)
+###    Y index=3600: (37.413200, -123.140900) to (39.470700, -118.713500)
+###    Y index=5600: (35.884300, -121.967300) to (37.900400, -117.598200)
+###    Y index=7600: (34.344500, -120.838200) to (36.319900, -116.529600)
+###    Y index=9600: (32.794700, -119.750000) to (34.730300, -115.503600)
+##
+#./plot_cross_section.py -b 38.9299,-124.3634 -u 41.03,-119.8802 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_1600.png
+#./plot_cross_section.py -b 37.4132,-123.1409 -u 39.4707,-118.7135 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_3600.png
+#./plot_cross_section.py -b 35.8843,-121.9673 -u 37.9004,-117.5982 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_5600.png
+#./plot_cross_section.py -b 34.3445,-120.8382 -u 36.3199,-116.5296 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_y_7600.png
+./plot_cross_section.py -b 32.7947,-119.75 -u 34.7303,-115.5036 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,bbp1d -a s -s 0 -e 50000 -o study_cross_y_9600n.png
+##
+##./plot_cross_section.py -b 40.8665,-123.9003 -u 32.2078,-117.5297 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_x_1500.png
+##./plot_cross_section.py -b 41.5799,-122.3885 -u 32.8442,-116.1279 -h 1000 -v 200 -d vs -c cencal,cca,cvms5,1d -a s -s 0 -e 50000 -o study_cross_x_3000.png
+##
+##
+#./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 0 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_0.png
+#./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 100 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_100.png
+#./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 1000 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_1000.png
+#./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -s 0.01 -e 10000 -d vs -a s -c cencal,cca,cvms5,1d -o cross_study_depth_10000.png
+##
+##
+##
+#./plot_depth_profile.py -s 38.3,-118 -d vs,vp,density -g 0 -e 10000 -c cca -v 10 -o on-depth_38_3x118_cca.png
+##
+#./plot_depth_profile.py -s 35.3,-115.5 -d vs,vp,density -g 0 -e 10000 -c cvms5 -v 10 -o on-depth_35_3x115_5_cvms5.png

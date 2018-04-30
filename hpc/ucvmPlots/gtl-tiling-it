@@ -1,33 +1,33 @@
-#
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca -o on-gtl_cencal_cca.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5 -o on-gtl_cvms5.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cca,cvms5 -o on-gtl_cca_cvms5.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5,cca -o on-gtl_cvms5_cca.png
 ##
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cca -o on-gtl_cca.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 10 -d vs -a s -c cca -o on-gtl_cca-10.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s_r -c cca -o on-gtl_cca_r.png
-#
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal -o on-gtl_cencal.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cca,cencal -o on-gtl_cca_cencal.png
-#
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5 -o on-gtl_cvms5.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cvms5 -o on-gtl_cencal_cvms5.png
-./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5,cencal -o on-gtl_cvms5_cencal.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca -o on-gtl_cencal_cca.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5 -o on-gtl_cvms5.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cca,cvms5 -o on-gtl_cca_cvms5.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5,cca -o on-gtl_cvms5_cca.png
+###
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cca -o on-gtl_cca.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 10 -d vs -a s -c cca -o on-gtl_cca-10.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s_r -c cca -o on-gtl_cca_r.png
 ##
-#
-## VS30
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal -o on-gtl_cencal.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cca,cencal -o on-gtl_cca_cencal.png
 ##
-##./plot_vs30_map.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -a s -c cca -o vs30_cca.png
-##./plot_vs30_map.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -a s -c cvms5 -o vs30_cvms5.png
-#
-### TARGET
-./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca,cvms5 -o on-gtl_cencal_cca_cvms5.png
-#
-./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 10 -d vs -a s -c cencal,cca,cvms5 -o on-gtl_cencal_cca_cvms5-10.png
-#
-./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cvms5,cs173 -o on-gtl_cencal_cs173_cvms5.png
-#
-./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.01 -e 0 -d vs -a s -c cencal,cca,cvms5,1d -o on-gtl_cencal_cca_cvms5_1d-2.png
-#./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca,cvmsi,1d -o on-gtl_cencal_cca_cvmsi_1d-2.png
-#./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca,cvmsi -o on-gtl_cencal_cca_cvmsi-2.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5 -o on-gtl_cvms5.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cvms5 -o on-gtl_cencal_cvms5.png
+#./plot_horizontal_slice.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cvms5,cencal -o on-gtl_cvms5_cencal.png
+###
+##
+### VS30
+###
+###./plot_vs30_map.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -a s -c cca -o vs30_cca.png
+###./plot_vs30_map.py -b 31.5,-125.75 -u 42.5,-114.5 -s 0.05 -a s -c cvms5 -o vs30_cvms5.png
+##
+#### TARGET
+#./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca,cvms5 -o on-gtl_cencal_cca_cvms5.png
+##
+#./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 10 -d vs -a s -c cencal,cca,cvms5 -o on-gtl_cencal_cca_cvms5-10.png
+##
+#./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cvms5,cs173 -o on-gtl_cencal_cs173_cvms5.png
+##
+#./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.01 -e 0 -d vs -a s -c cencal,cca,cvms5,1d -o on-gtl_cencal_cca_cvms5_1d-2.png
+##./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca,cvmsi,1d -o on-gtl_cencal_cca_cvmsi_1d-2.png
+##./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cca,cvmsi -o on-gtl_cencal_cca_cvmsi-2.png

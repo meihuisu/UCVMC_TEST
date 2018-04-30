@@ -1,8 +1,8 @@
-cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.first cca_z2.5.first
-cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.last cca_z2.5.last
-cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.firstOrSecond cca_z2.5.firstOrSecond
-cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.secondOnly cca_z2.5.secondOnly
-cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z2.5_n20.threeLast cca_z2.5.threeLast
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_slurm_cca_z2.5.first cca_z2.5.first
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_slurm_cca_z2.5.last cca_z2.5.last
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_slurm_cca_z2.5.firstOrSecond cca_z2.5.firstOrSecond
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_slurm_cca_z2.5.secondOnly cca_z2.5.secondOnly
+cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_slurm_cca_z2.5.threeLast cca_z2.5.threeLast
 
 cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.first cca_z1.first
 cp /home/scec-00/mei/UCVM_REVIEW/RESULT/basin_query_mpi_cca_z1.0_n20.last cca_z1.last

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-../bin/ucvm_query -f ../conf/ucvm.conf -m cs173 << EOF &> scot-it.log
+../bin/ucvm_query -f ../conf/ucvm.conf -m cs173 << EOF &> cs173-it.log
 -118.723500 34.614500 0.0
 -118.723500 34.614500 100.0
 -118.723500 34.614500 1000.0

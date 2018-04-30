@@ -1,7 +1,13 @@
 #!/bin/bash
-#SBATCH --ntasks=20 
-#SBATCH --time=00:30:00 
+#SBATCH --ntasks=40 
+#SBATCH -N 20
+#SBATCH --mem 0 # Set to unlimited memory
+#SBATCH --time=04:00:00 
+#SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cca_z2.5.out
+#SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cca_z2.5.err
 #SBATCH --export=NONE 
+#SBATCH --mail-user=mei@usc.edu
+#SBATCH --mail-type=END
 
 ## setup mpi environment
 source /usr/usc/openmpi/default/setup.sh
@@ -30,14 +36,9 @@ cd $SLURM_SUBMIT_DIR
 cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 
-srun --ntasks=${SLURM_NTASKS} --mpi=pmi2 ${SLURM_SUBMIT_DIR}/basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/basin_query_mpi_slurm_cs173_z2.5_n20x.first,${TEST_TOP_PATH}/RESULT/basin_query_mpi_slurm_cs173_z2.5_n20x.firstOrSecond,${TEST_TOP_PATH}/RESULT/basin_query_mpi_slurm_cs173_z2.5_n20x.last,${TEST_TOP_PATH}/RESULT/basin_query_mpi_slurm_cs173_z2.5_n20x.secondOnly,${TEST_TOP_PATH}/RESULT/basin_query_mpi_slurm_cs173_z2.5_n20x.threeLast -o ${TEST_TOP_PATH}/RESULT/basin_query_mpi_slurm_cs173_z2.5_n20x.result,${TEST_TOP_PATH}/RESULT/basin_query_mpi_slurm_cs173_z2.5_n20x.meta.json -f ${SLURM_SUBMIT_DIR}/ucvm.conf -m cs173 -i 20 -v 2500 -l 36.35,-120.0 -s 0.005 -x 200 -y 100
+srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/hpc_cca_z2.5.first,${TEST_TOP_PATH}/RESULT/hpc_cca_z2.5.firstOrSecond,${TEST_TOP_PATH}/RESULT/hpc_cca_z2.5.last,${TEST_TOP_PATH}/RESULT/hpc_cca_z2.5.secondOnly,${TEST_TOP_PATH}/RESULT/hpc_cca_z2.5.threeLast -o ${TEST_TOP_PATH}/RESULT/hpc_cca_z2.5.result,${TEST_TOP_PATH}/RESULT/hpc_cca_z2.5.meta.json -f ${SLURM_SUBMIT_DIR}/ucvm.conf -m cca -i 20 -v 2500 -l 33.35,-123.0 -s 0.005 -x 1551 -y 1201
 
 ret=$?
-
-#get the output files
-cd "$SLURM_SUBMIT_DIR"
-
-cp ${TMPDIR}/*  ${TEST_TOP_PATH}/RESULT/
 
 echo "Slurm Jobs done" `date`
 exit $ret
