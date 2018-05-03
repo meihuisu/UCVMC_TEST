@@ -1,2 +1,22 @@
-GOAL:  create pbs scripts for running at NCSA blue waters
+
+GOAL: construct AWP test meshes using both ucvm2mesh and ucvm2mesh_mpi
+
+1) When construct configuration file for a run,
+   a) number of cell for each dimension must be divisible by the grid
+      partition. ie. 384 % 4 = 0 (modulo)
+   b) number of nodes requested (via mpirun -node node_request) must match
+      with the partition. ie. the following example is for node_request=40)
+
+# Number of cells along each dim
+nx=384
+ny=248
+nz=25
+
+# Partitioning of grid among processors
+px=4
+py=2
+pz=5
+
+
+
 

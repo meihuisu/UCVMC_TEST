@@ -1,0 +1,38 @@
+#!/bin/bash
+#PBS -l arch=x86_64,walltime=00:30:00,nodes=1:ppn=1
+#PBS -V
+#PBS -A lc_pjm
+#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.err
+#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.out
+
+export MX_RCACHE=0
+
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+export TEST_SRC_PATH=/home/scec-00/mei/UCVM_REVIEW/UCVMC_TEST/hpc/ucvm2mesh
+
+###############################################################################
+
+cd /scratch
+cp ${TEST_SRC_PATH}/ucvm2mesh.conf .
+cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh .
+cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
+
+./ucvm2mesh -f ucvm2mesh.conf
+#mpirun -np 1 ./ucvm2mesh-mpi -f ucvm2mesh_mpi40.conf
+
+echo "Job done"
+exit 0

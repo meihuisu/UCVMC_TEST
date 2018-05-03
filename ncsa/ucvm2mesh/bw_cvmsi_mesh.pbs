@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -l walltime=01:00:00,nodes=10:ppn=2:xe
+#PBS -A baln
+#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmsi_mesh.err
+#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmsi_mesh.out
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/projects/sciteam/baln/meisu/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+export TEST_TOP_PATH=/u/sciteam/meisu/scratch/UCVMC_TEST
+export TEST_SRC_PATH=${TEST_TOP_PATH}/ncsa/users/small
+
+###############################################################################
+
+cd $PBS_O_WORKDIR
+cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
+cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+cp ${TEST_SRC_PATH}/bw_cvmsi_mesh.conf .
+
+aprun -n 20 ./ucvm2mesh-mpi -f bw_cvmsi_mesh.conf
+
+echo "Jobs done"
+exit 0
+
