@@ -1,3 +1,0 @@
-
-qsub -A lc_pjm ucvm2mesh.pbs
-

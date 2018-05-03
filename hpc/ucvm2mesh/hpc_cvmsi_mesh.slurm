@@ -1,14 +1,19 @@
 #!/bin/bash
-#PBS -l arch=x86_64,walltime=00:30:00,nodes=1:ppn=1
-#PBS -V
-#PBS -A lc_pjm
-#PBS -e /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.err
-#PBS -o /home/scec-00/mei/UCVM_REVIEW/RESULT/ucvm2mesh.out
-
-export MX_RCACHE=0
+#SBATCH --ntasks=20
+#SBATCH -N 10
+#SBATCH --mem 0 # Set to unlimited memory
+#SBATCH --time=04:00:00 
+#SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.out
+#SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.err
+#SBATCH --export=NONE 
+#SBATCH --mail-user=mei@usc.edu
+#SBATCH --mail-type=END
 
 ## setup mpi environment
 source /usr/usc/openmpi/default/setup.sh
+
+## prepend anaconda's bin, including python2.7
+export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
 
 ## prepend velocity model's lib
 export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
@@ -22,17 +27,18 @@ if [ $LD_LIBRARY_PATH ] ; then
 fi
 #echo $LD_LIBRARY_PATH
 
-export TEST_SRC_PATH=/home/scec-00/mei/UCVM_REVIEW/UCVMC_TEST/hpc/ucvm2mesh
+export TEST_TOP_PATH=/home/scec-00/mei/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/ucvm2mesh
 
 ###############################################################################
 
-cd /scratch
-cp ${TEST_SRC_PATH}/ucvm2mesh.conf .
-cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh .
-cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
+cd $SLURM_SUBMIT_DIR
+cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh_mpi .
+cp ${TEST_SRC_PATH}/hpc_cvmsi_mesh.conf .
 
-./ucvm2mesh -f ucvm2mesh.conf
-#mpirun -np 1 ./ucvm2mesh-mpi -f ucvm2mesh_mpi40.conf
+srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/ucvm2mesh_mpi -f hpc_cvmsi_mesh.conf
 
-echo "Job done"
-exit 0
+ret=$?
+
+echo "Slurm Jobs done" `date`
+exit $ret
