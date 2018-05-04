@@ -17,7 +17,7 @@ fi
 #echo $LD_LIBRARY_PATH
 
 export TEST_TOP_PATH=/u/sciteam/meisu/scratch/UCVMC_TEST
-export TEST_SRC_PATH=${TEST_TOP_PATH}/ncsa/users/small
+export TEST_SRC_PATH=${TEST_TOP_PATH}/ncsa/ucvm2mesh
 
 ###############################################################################
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 #PBS -l walltime=01:00:00,nodes=81:ppn=4:xe
 #PBS -A baln
-#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmsi_mesh.err
-#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmsi_mesh.out
+#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_la_habra_mesh.err
+#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_la_habra_mesh.out
 
 ## prepend velocity model's lib
 export TEST_UCVMC_TARGET=/projects/sciteam/baln/meisu/TARGET_UCVMC
@@ -17,7 +17,7 @@ fi
 #echo $LD_LIBRARY_PATH
 
 export TEST_TOP_PATH=/u/sciteam/meisu/scratch/UCVMC_TEST
-export TEST_SRC_PATH=${TEST_TOP_PATH}/ncsa/users/small
+export TEST_SRC_PATH=${TEST_TOP_PATH}/ncsa/ucvm2mesh
 
 ###############################################################################
 
