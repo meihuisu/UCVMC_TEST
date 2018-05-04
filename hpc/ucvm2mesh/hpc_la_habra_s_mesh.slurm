@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --ntasks=10
-#SBATCH -N 10
+#SBATCH --ntasks=120
+#SBATCH -N 30 
 #SBATCH --mem 0 # Set to unlimited memory
-#SBATCH --time=04:00:00 
-#SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.out
-#SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.err
+#SBATCH --time=08:00:00 
+#SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_la_habra_s_mesh.out
+#SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_la_habra_s_mesh.err
 #SBATCH --export=NONE 
 #SBATCH --mail-user=mei@usc.edu
 #SBATCH --mail-type=END
@@ -34,9 +34,9 @@ export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/ucvm2mesh
 
 cd $SLURM_SUBMIT_DIR
 cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
-cp ${TEST_SRC_PATH}/hpc_cvmsi_mesh.conf .
+cp ${TEST_SRC_PATH}/hpc_la_habra_s_mesh.conf .
 
-srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/ucvm2mesh-mpi -f hpc_cvmsi_mesh.conf
+srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/ucvm2mesh-mpi -f hpc_la_habra_s_mesh.conf
 
 ret=$?
 
