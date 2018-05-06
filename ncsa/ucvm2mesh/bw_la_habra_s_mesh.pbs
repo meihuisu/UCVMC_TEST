@@ -1,8 +1,8 @@
 #!/bin/bash
-#PBS -l walltime=01:00:00,nodes=10:ppn=2:xe
+#PBS -l walltime=01:00:00,nodes=30:ppn=4:xe
 #PBS -A baln
-#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmsi_mesh.err
-#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmsi_mesh.out
+#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_la_habra_s_mesh.err
+#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_la_habra_s_mesh.out
 
 ## prepend velocity model's lib
 export TEST_UCVMC_TARGET=/projects/sciteam/baln/meisu/TARGET_UCVMC
@@ -24,9 +24,9 @@ export TEST_SRC_PATH=${TEST_TOP_PATH}/ncsa/ucvm2mesh
 cd $PBS_O_WORKDIR
 cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
-cp ${TEST_SRC_PATH}/bw_cvmsi_mesh.conf .
+cp ${TEST_SRC_PATH}/bw_la_habra_s_mesh.conf .
 
-aprun -n 20 ./ucvm2mesh-mpi -f bw_cvmsi_mesh.conf
+aprun -n 120 ./ucvm2mesh-mpi -f bw_la_habra_s_mesh.conf
 
 echo "Jobs done"
 exit 0
