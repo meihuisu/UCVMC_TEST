@@ -2,7 +2,7 @@
 #SBATCH --ntasks=120
 #SBATCH -N 30 
 #SBATCH --mem 0 # Set to unlimited memory
-#SBATCH --time=08:00:00 
+#SBATCH --time=12:00:00 
 #SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_la_habra_s_mesh.out
 #SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_la_habra_s_mesh.err
 #SBATCH --export=NONE 
