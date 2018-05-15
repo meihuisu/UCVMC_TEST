@@ -31,9 +31,9 @@ rm -rf $TEST_UCVMC_TARGET
 mkdir $TEST_UCVMC_TARGET
 
 cd $TEST_UCVMC_TARGET
-#git clone https://github.com/meihuisu/UCVMC.git
-git clone https://github.com/SCECcode/UCVMC.git
-cd UCVMC; git checkout dev
+git clone https://github.com/meihuisu/UCVMC.git
+#git clone https://github.com/SCECcode/UCVMC.git
+#cd UCVMC; git checkout dev
 
 cd $UCVM_SRC_PATH/largefiles; ./get_large_files.py
 cd $UCVM_SRC_PATH/largefiles; ./check_large_files.py
