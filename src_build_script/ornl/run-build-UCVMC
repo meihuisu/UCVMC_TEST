@@ -30,11 +30,11 @@ if [ $PYTHONPATH ] ; then
 fi
 #echo $PYTHONPATH
 
-rm -rf $TEST_UCVMC_TARGET 
-mkdir $TEST_UCVMC_TARGET
+##rm -rf $TEST_UCVMC_TARGET 
+##mkdir $TEST_UCVMC_TARGET
 
-cd $TEST_UCVMC_TARGET
-git clone https://github.com/meihuisu/UCVMC.git
+#cd $TEST_UCVMC_TARGET
+#git clone https://github.com/meihuisu/UCVMC.git
 #git clone https://github.com/SCECcode/UCVMC.git
 
 cd $UCVM_SRC_PATH/largefiles; ./get_large_files.py
