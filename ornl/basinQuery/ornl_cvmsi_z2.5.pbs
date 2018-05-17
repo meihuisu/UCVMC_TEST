@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#PBS -l walltime=00:10:00
+#PBS -l nodes=1
+#PBS -e /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_cvmsi_query.e
+#PBS -o /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_cvmsi_query.o
+#PBS -q debug
+#PBS -A GEO112
+
+cd $PBS_O_WORKDIR
+aprun -n 1 /lustre/atlas/proj-shared/geo112/ucvm_18_5/install/bin/basin_query -f /lustre/atlas/proj-shared/geo112/ucvm_18_5/install/conf/ucvm.conf  -m cvmsi -v 2500 < /lustre/atlas/proj-shared/geo112/ucvm_18_5/install/tests/test_latlonsonly.txt 
+
+
