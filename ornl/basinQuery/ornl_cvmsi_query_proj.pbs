@@ -2,8 +2,8 @@
 
 #PBS -l walltime=00:10:00
 #PBS -l nodes=1
-#PBS -e /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_cvmsi_query.e
-#PBS -o /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_cvmsi_query.o
+#PBS -e /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_cvmsi_query_proj.e
+#PBS -o /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_cvmsi_query_proj.o
 #PBS -q debug
 #PBS -A GEO112
 

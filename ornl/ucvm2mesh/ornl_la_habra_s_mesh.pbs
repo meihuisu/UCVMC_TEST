@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#PBS -l walltime=01:00:00
+#PBS -l nodes=10
+#PBS -e /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_la_habra_s_mesh.e
+#PBS -o /ccs/home/mei/scratch/UCVM_REVIEW/RESULT/ornl_la_habra_s_mesh.o
+#PBS -A GEO112
+
+cd $PBS_O_WORKDIR
+cp /ccs/home/mei/scratch/UCVM_REVIEW/UCVMC_TEST/ornl/ucvm2mesh/ornl_la_habra_s_mesh.conf .
+
+aprun -n 120 /lustre/atlas/proj-shared/geo112/ucvm_18_5/install/bin/ucvm2mesh-mpi -f $PBS_O_WORKDIR/ornl_la_habra_s_mesh.conf
+
+echo "Jobs done"
+exit 0
+
