@@ -1,0 +1,34 @@
+#!/bin/bash
+#PBS -l walltime=01:00:00,nodes=10:ppn=2:xe
+#PBS -A baln
+#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cca_z2.5_proj.err
+#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cca_z2.5_proj.out
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/projects/sciteam/baln/meisu/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+export TEST_TOP_PATH=/u/sciteam/meisu/scratch/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/ncsa/basinQuery
+
+###############################################################################
+
+cd $PBS_O_WORKDIR
+cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
+cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+
+#CCA: [minLat = 33.35, minLon = -123.0, nx = 1551, ny = 1201, gridSpacing = 0.005 degrees]
+
+aprun -n 20 ./basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/bw_cca_z2.5_proj.first,${TEST_TOP_PATH}/RESULT/bw_cca_z2.5_proj.firstOrSecond,${TEST_TOP_PATH}/RESULT/bw_cca_z2.5_proj.last,${TEST_TOP_PATH}/RESULT/bw_cca_z2.5_proj.secondOnly,${TEST_TOP_PATH}/RESULT/bw_cca_z2.5_proj.threeLast -o ${TEST_TOP_PATH}/RESULT/bw_cca_z2.5_proj.result -f ucvm.conf -m cca -i 20 -v 2500 -l 33.35,-123.0 -s 0.005 -x 1551 -y 1201
+
+echo "Jobs done"
+exit 0
+

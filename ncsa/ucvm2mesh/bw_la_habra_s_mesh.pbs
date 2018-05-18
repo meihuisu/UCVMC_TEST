@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l walltime=01:00:00,nodes=30:ppn=4:xe
+#PBS -l walltime=04:00:00,nodes=125:ppn=2:xe
 #PBS -A baln
 #PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_la_habra_s_mesh.err
 #PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_la_habra_s_mesh.out
@@ -26,7 +26,7 @@ cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 cp ${TEST_SRC_PATH}/bw_la_habra_s_mesh.conf .
 
-aprun -n 120 ./ucvm2mesh-mpi -f bw_la_habra_s_mesh.conf
+aprun -n 250 ./ucvm2mesh-mpi -f bw_la_habra_s_mesh.conf
 
 echo "Jobs done"
 exit 0
