@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#PBS -l walltime=2:00:00
+#PBS -l nodes=5
+#PBS -e /lustre/atlas/proj-shared/geo112/mei/UCVM_REVIEW/RESULT/ornl_cencal_cca_cvms5_1d_z2.5_proj.e
+#PBS -o /lustre/atlas/proj-shared/geo112/mei/UCVM_REVIEW/RESULT/ornl_cencal_cca_cvms5_1d_z2.5_proj.o
+#PBS -A GEO112
+
+export TEST_TOP_PATH=/lustre/atlas/proj-shared/geo112/mei/UCVM_REVIEW/RESULT
+cd $PBS_O_WORKDIR
+
+aprun -n 40 /lustre/atlas/proj-shared/geo112/ucvm_18_5/install/bin/basin_query_mpi -b $TEST_TOP_PATH/ornl_cencal_cca_cvms5_1d_z2.5_proj.first,$TEST_TOP_PATH/ornl_cencal_cca_cvms5_1d_z2.5_proj.firstOrSecond,$TEST_TOP_PATH/ornl_cencal_cca_cvms5_1d_z2.5_proj.last,$TEST_TOP_PATH/ornl_cencal_cca_cvms5_1d_z2.5_proj.secondOnly,$TEST_TOP_PATH/ornl_cencal_cca_cvms5_1d_z2.5_proj.threeLast -o $TEST_TOP_PATH/ornl_cencal_cca_cvms5_1d_z2.5_proj.result -f /lustre/atlas/proj-shared/geo112/ucvm_18_5/install/conf/ucvm.conf -m cencal,cca,cvms5,1d -i 20 -v 2500 -l 30,-130.0 -s 0.005 -x 3400 -y 2400
+
+echo "Jobs done"
+exit 0
+
+
+
