@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --ntasks=120
-#SBATCH -N 30 
+#SBATCH --ntasks=125
+#SBATCH -N 30  
 #SBATCH --mem 0 # Set to unlimited memory
 #SBATCH --time=12:00:00 
 #SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_la_habra_s_mesh.out
@@ -36,7 +36,7 @@ cd $SLURM_SUBMIT_DIR
 cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
 cp ${TEST_SRC_PATH}/hpc_la_habra_s_mesh.conf .
 
-srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/ucvm2mesh-mpi -f hpc_la_habra_s_mesh.conf
+srun -v --mpi=pmi2 $SLURM_SUBMIT_DIR/ucvm2mesh-mpi -f hpc_la_habra_s_mesh.conf
 
 ret=$?
 

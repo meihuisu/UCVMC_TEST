@@ -1,13 +1,16 @@
 #!/bin/bash
-#SBATCH --ntasks=324
-#SBATCH -N 81 
+#SBATCH --ntasks=162
+#SBATCH -N 40 
 #SBATCH --mem 0 # Set to unlimited memory
-#SBATCH --time=12:00:00 
+#SBATCH --time=24:00:00 
 #SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_la_habra_mesh.out
 #SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_la_habra_mesh.err
 #SBATCH --export=NONE 
 #SBATCH --mail-user=mei@usc.edu
 #SBATCH --mail-type=END
+
+
+## total grid-tasks = 18x18x64 =>20736
 
 ## setup mpi environment
 source /usr/usc/openmpi/default/setup.sh
@@ -32,11 +35,11 @@ export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/ucvm2mesh
 
 ###############################################################################
 
-cd $SLURM_SUBMIT_DIR
-cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
-cp ${TEST_SRC_PATH}/hpc_la_habra_mesh.conf .
+#cd $SLURM_SUBMIT_DIR
+#cp ${UCVM_INSTALL_PATH}/bin/ucvm2mesh-mpi .
+#cp ${TEST_SRC_PATH}/hpc_la_habra_mesh.conf .
 
-srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/ucvm2mesh-mpi -f hpc_la_habra_mesh.conf
+srun -v --mpi=pmi2 ./ucvm2mesh-mpi -f hpc_la_habra_mesh.conf
 
 ret=$?
 
