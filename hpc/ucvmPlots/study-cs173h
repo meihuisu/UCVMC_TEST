@@ -4,51 +4,52 @@
 # CS173H
 
 ## tiling
-./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cvms5,cs173h -o tiling_cencal_cvms5_cs173h.png
+./plot_horizontal_slice.py -b 32,-125.75 -u 42.5,-114.5 -s 0.05 -e 0 -d vs -a s -c cencal,cvms5,cs173h -o tiling_cencal_cvms5_GTL_cs173h.png
 
-./plot_depth_profile.py -s 35.5,-119.125 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_cs173h_d1.png
+./plot_depth_profile.py -s 35.5,-119.125 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_GTL_cs173h_d1.png
 
-./plot_depth_profile.py -s 34.09986,-118.75974 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_cs173h_d2.png
+./plot_depth_profile.py -s 34.09986,-118.75974 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_GTL_cs173h_d2.png
 
-./plot_depth_profile.py -s 34.09259,-121.43373 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_cs173h_d3.png
+./plot_depth_profile.py -s 34.09259,-121.43373 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_GTL_cs173h_d3.png
 
-./plot_depth_profile.py -s 34.5,-118.67 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_cs173h_d4.png
+./plot_depth_profile.py -s 34.5,-118.67 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_GTL_cs173h_d4.png
 
 ## outside..
-./plot_depth_profile.py -s 31.266430,-116.485620 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_cs173h_d5.png
+./plot_depth_profile.py -s 31.266430,-116.485620 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_GTL_cs173h_d5.png
 
-./plot_depth_profile.py -s 38,-123 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_cs173h_d6.png
+./plot_depth_profile.py -s 38,-123 -d vs,vp,density -g 2500 -e 5000 -c cs173h -v 20 -o depth_GTL_cs173h_d6.png
 
 # Z at 0 (z=0)
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 0 -o cs173h_hort_0.png
+./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 0 -o cs173h_GTL_hort_0.png
 
 # Z at 1050 (z=6)
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 1050 -o cs173h_hort_1050.png
+./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 1050 -o cs173h_GTL_hort_1050.png
 
 # Z at 9975 (z=57)
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 9975 -o cs173h_hort_9975.png
+./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 9975 -o cs173h_GTL_hort_9975.png
 
 # Z at 19950 (z=114)
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 19950 -o cs173h_hort_19950.png
+./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 19950 -o cs173h_GTL_hort_19950.png
 
 # Z at 50400 (z=)287
-./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 50400 -o cs173h_hort_19950.png
+./plot_horizontal_slice.py -b 30,-130 -u 42,-113 -d vs -c cs173h -a s -s 0.05 -e 50400 -o cs173h_GTL_hort_50400.png
 
 
 #X=1000: (32.550700, -115.409380) to (38.446980, -126.695380) 
-./plot_cross_section.py -b 32.550700,-115.409380 -u 38.446980,-126.695380 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_cross_x1.png
+./plot_cross_section.py -b 32.550700,-115.409380 -u 38.446980,-126.695380 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_GTL_cross_x1.png
 
 #X=2000: (33.824270, -114.301790) to (39.813370, -125.716460)
-./plot_cross_section.py -b 33.824270,-114.301790 -u 39.813370,-125.716460 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_cross_x2.png
+./plot_cross_section.py -b 33.824270,-114.301790 -u 39.813370,-125.716460 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_GTL_cross_x2.png
 
 #Y=1740: (32.824810, -119.141480) to (36.959180, -115.655030)
-./plot_cross_section.py -b 32.824810,-119.141480 -u 36.959180,-115.655030 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_cross_y1.png
+./plot_cross_section.py -b 32.824810,-119.141480 -u 36.959180,-115.655030 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_GTL_cross_y1.png
 
 #Y=3480: (34.320700, -121.888010) to (38.531550, -118.487980) 
-./plot_cross_section.py -b 34.320700,-121.888010 -u 38.531550,-118.487980 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_cross_y2.png
+./plot_cross_section.py -b 34.320700,-121.888010 -u 38.531550,-118.487980 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_GTL_cross_y2.png
 
 #Y=5220: (35.744050, -124.726900) to (40.029510, -121.442660) 
-./plot_cross_section.py -b 35.744050,-124.726900 -u 40.029510,-121.442660 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_cross_y3.png
+./plot_cross_section.py -b 35.744050,-124.726900 -u 40.029510,-121.442660 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_GTL_cross_y3.png
 
+./plot_cross_section.py -b 33.82,-120.75 -u 37.96,-117.16 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 50000 -o cs173h_GTL_cross_yy.png
 
 
