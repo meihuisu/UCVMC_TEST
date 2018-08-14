@@ -1,0 +1,8 @@
+### santa maria cs173h, cs173, cs173h-gtl
+# (35, -116) to (35, -120) 
+/plot_cross_section.py -b 35,-121 -u 35,-118 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 10000 -o cs173h_santaMaria_x1_a.png
+./plot_cross_section.py -b 35,-121 -u 35,-118 -h 1000 -v 100 -d vs -c cs173 -a s -s 0 -e 10000 -o cs173_santaMaria_x1_a.png
+
+# (34.5, -116) to (34.5, -120) 
+./plot_cross_section.py -b 34.5,-121 -u 34.5,-118 -h 1000 -v 100 -d vs -c cs173h -a s -s 0 -e 10000 -o cs173h_santaMaria_x2_a.png
+./plot_cross_section.py -b 34.5,-121 -u 34.5,-118 -h 1000 -v 100 -d vs -c cs173 -a s -s 0 -e 10000 -o cs173_santaMaria_x2_a.png

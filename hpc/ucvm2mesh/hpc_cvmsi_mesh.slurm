@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --ntasks=10
+#SBATCH --ntasks=8
 #SBATCH -N 4 
 #SBATCH --mem 0 # Set to unlimited memory
-#SBATCH --time=00:20:00 
+#SBATCH --time=02:00:00 
 #SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.out
 #SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.err
 #SBATCH --export=NONE 

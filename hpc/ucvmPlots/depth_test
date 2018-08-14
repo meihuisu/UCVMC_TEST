@@ -1,0 +1,9 @@
+#!/usr/bin/sh 
+#
+
+TITLE=1; LAT=34.279283; LON=-118.502134
+
+./plot_depth_profile.py -d vs,vp,density -e 5000 -v 10 -c cvmh -s ${LAT},${LON} -o 1_cvmh_noGTL_x.png 
+./plot_depth_profile.py -d vs -e 5000 -v 10 -c cvmh -s ${LAT},${LON} -o 1_cvmh_noGTL_x.png 
+./plot_depth_profile.py -d vs,vp,density -e 5000 -v 10 -c cvmh -s ${LAT},${LON} -f 1_cvmh_noGTL_x_matprops.json -o 22.png 
+./plot_depth_profile.py -d vs,vp,density -e 5000 -v 10 -c cvmh -s ${LAT},${LON} 
