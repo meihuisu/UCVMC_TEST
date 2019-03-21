@@ -47,7 +47,6 @@ n
 y
 y
 y
-y
 EOB
 
 cd $UCVM_SRC_PATH/largefiles; ./check_largefiles_md5.py 
