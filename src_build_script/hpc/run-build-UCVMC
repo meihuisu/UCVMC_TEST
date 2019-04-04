@@ -31,28 +31,30 @@ rm -rf $TEST_UCVMC_TARGET
 mkdir $TEST_UCVMC_TARGET
 
 cd $TEST_UCVMC_TARGET
-git clone https://github.com/meihuisu/UCVMC.git
+#git clone https://github.com/meihuisu/UCVMC.git
+git clone https://github.com/meihuisu/UCVMC-meihui.git UCVMC
 #git clone https://github.com/SCECcode/UCVMC.git
 #cd UCVMC; git checkout dev
 
-cd $UCVM_SRC_PATH/largefiles; ./get_large_files.py
-cd $UCVM_SRC_PATH/largefiles; ./check_large_files.py
+cd $UCVM_SRC_PATH/largefiles 
+./get_large_files.py << EOB
+y
+y
+n
+n
+y
+y
+y
+EOB
+
+cd $UCVM_SRC_PATH/largefiles; ./check_largefiles_md5.py
 cd $UCVM_SRC_PATH/largefiles; ./stage_large_files.py
 
 cd $UCVM_SRC_PATH
-./ucvm_setup.py -d << EOF &> ucvmc_setup_install.log
+./ucvm_setup.py -d -a << EOF &> ucvm_setup_install.log
 $UCVM_INSTALL_PATH
-yes
-yes
-yes
-yes
-yes
-yes
-yes
-yes
 EOF
 
-cd $UCVM_SRC_PATH; make check
+cd $UCVM_SRC_PATH; make check &> ucvm_setup_make_check.log
 
 echo "..EXITING.."
-exit
