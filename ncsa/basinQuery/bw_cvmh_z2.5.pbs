@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -l walltime=01:00:00,nodes=10:ppn=2:xe
+#PBS -A baln
+#PBS -e /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmh_z2.5.err
+#PBS -o /u/sciteam/meisu/scratch/UCVM_REVIEW/RESULT/bw_cvmh_z2.5.out
+
+## setup mei's environment
+source /u/sciteam/meisu/setup_env.sh
+
+export TEST_TOP_PATH=/u/sciteam/meisu/scratch/UCVM_REVIEW
+export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/ncsa/basinQuery
+
+###############################################################################
+
+cd $PBS_O_WORKDIR
+cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi_complete .
+cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
+
+#CCA: [minLat = 33.35, minLon = -123.0, nx = 1551, ny = 1201, gridSpacing = 0.005 degrees]
+
+aprun -n 20 ./basin_query_mpi_complete -b ${TEST_TOP_PATH}/RESULT/bw_cvmh_z2.5.first,${TEST_TOP_PATH}/RESULT/bw_cvmh_z2.5.firstOrSecond,${TEST_TOP_PATH}/RESULT/bw_cvmh_z2.5.last,${TEST_TOP_PATH}/RESULT/bw_cvmh_z2.5.secondOnly,${TEST_TOP_PATH}/RESULT/bw_cvmh_z2.5.threeLast -o ${TEST_TOP_PATH}/RESULT/bw_cvmh_z2.5.result -f ucvm.conf -m cvmh -i 20 -v 2500 -l 33.35,-118 -s 0.005 -x 200 -y 200
+
+echo "Jobs done"
+exit 0
+

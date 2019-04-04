@@ -10,6 +10,8 @@
 #SBATCH --mail-type=END
 
 source /home/scec-00/mei/setup_env.sh
+## setup mpi environment
+source /usr/usc/openmpi/default/setup.sh
 
 export TEST_TOP_PATH=/home/scec-00/mei/UCVM_REVIEW
 export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/reviewStudy
@@ -17,12 +19,12 @@ export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/reviewStudy
 ###############################################################################
 
 cd $SLURM_SUBMIT_DIR
-cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
+cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi_complete .
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 
 ##original, -m cs173 -i 20 -v 2500 -l 31,-128.0 -s 0.01 -x 1600 -y 1100
 
-srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.first,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.firstOrSecond,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.last,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.secondOnly,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.threeLast -o ${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.result,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.meta.json -f ${SLURM_SUBMIT_DIR}/ucvm.conf -m cs173 -i 20 -v 2500 -l 33.35,-123.0 -s 0.005 -x 1551 -y 1201
+srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/basin_query_mpi_complete -b ${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.first,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.firstOrSecond,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.last,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.secondOnly,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.threeLast -o ${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.result,${TEST_TOP_PATH}/RESULT/hpc_cs173_z2.5.meta.json -f ${SLURM_SUBMIT_DIR}/ucvm.conf -m cs173 -i 20 -v 2500 -l 33.35,-123.0 -s 0.005 -x 1551 -y 1201
 
 ret=$?
 
