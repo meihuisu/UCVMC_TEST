@@ -1,0 +1,6 @@
+minLat = 33.35
+minLon = -123
+nx = 1551
+ny = 1201
+gridSpacing = 0.005 
+
