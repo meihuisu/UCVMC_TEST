@@ -2,7 +2,7 @@
 #SBATCH --ntasks=8
 #SBATCH -N 4 
 #SBATCH --mem 0 # Set to unlimited memory
-#SBATCH --time=02:00:00 
+#SBATCH --time=00:30:00 
 #SBATCH -o /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.out
 #SBATCH -e /home/scec-00/mei/UCVM_REVIEW/RESULT/hpc_cvmsi_mesh.err
 #SBATCH --export=NONE 
@@ -21,9 +21,9 @@ export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
 export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
 
 if [ $LD_LIBRARY_PATH ] ; then
-  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-5/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
   else
-    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-5/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
 fi
 #echo $LD_LIBRARY_PATH
 
