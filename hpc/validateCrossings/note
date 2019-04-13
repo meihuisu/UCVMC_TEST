@@ -1,0 +1,50 @@
+GOAL: 1) to validate the 3 crossings in CCA06 is valid phenomena or not
+      2) to validate what is 'invalid' grid point return is distinguishable
+      from a grid point with no crossing
+      3) to validate in other models that the 'background' model/expectation
+      is interferring with 2 or not (cvmsi?? does or does not have
+      background model for 'invalid' grid point(outside of model boundary)
+
+--> run a whole complete model set
+--> run a subset around 34.5, -120
+--> run in-model point, out-model point
+
+
+For direct basin_query call -i 20 -v 2500 -m cca
+for a point outside,  -120 39 
+
+(gdb) print qprops[i]
+$7 = {surf = 1899.8453862805513, vs30 = 180, depth = 0, 
+  domain = UCVM_DOMAIN_CRUST, shift_cr = 0, shift_gtl = 0, crust = {
+    source = -1, vp = 0, vs = 0, rho = 0}, gtl = {source = -1, vp = 0, 
+    vs = 0, rho = 0}, cmb = {source = -1, vp = 0, vs = 0, rho = 0}}
+(gdb) print i
+$8 = 0
+
+for a point inside, -120 38
+
+(gdb) print qprops[0]
+$9 = {surf = 1662.4975622538427, vs30 = 515, depth = 0, 
+  domain = UCVM_DOMAIN_CRUST, shift_cr = 0, shift_gtl = 0, crust = {
+    source = 0, vp = 5133.5859367134544, vs = 3144.7019903145097, 
+    rho = 2573.0258522607364}, gtl = {source = -1, vp = 0, vs = 0, 
+    rho = 0}, cmb = {source = -2, vp = 5133.5859367134544, 
+    vs = 3144.7019903145097, rho = 2573.0258522607364}}
+
+another point inside, -119.905     34.655
+
+(gdb) print qprops[0]
+$10 = {surf = 473.72683138185005, vs30 = 455, depth = 0, 
+  domain = UCVM_DOMAIN_CRUST, shift_cr = 0, shift_gtl = 0, crust = {
+    source = 0, vp = 4923.302881227014, vs = 2556.274060521675, 
+    rho = 2425.5103732848147}, gtl = {source = -1, vp = 0, vs = 0, 
+    rho = 0}, cmb = {source = -2, vp = 4923.302881227014, 
+    vs = 2556.274060521675, rho = 2425.5103732848147}}
+
+
+ -120.0000    34.5000   1760.000   1760.000   1760.000
+ -120.0000    39.0000     -1.000     -1.000     -1.000
+ -120.0000    34.6950   1400.000   2680.000   3620.000
+ -119.9050    34.6550      0.000   3000.000   4040.000
+
+
