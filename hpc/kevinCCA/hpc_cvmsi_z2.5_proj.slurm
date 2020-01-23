@@ -16,7 +16,7 @@ export TEST_SRC_PATH=${TEST_TOP_PATH}/UCVMC_TEST/hpc/reviewStudy
 ###############################################################################
 
 cd $SLURM_SUBMIT_DIR
-cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi .
+cp ${UCVM_INSTALL_PATH}/bin/basin_query_mpi_complete .
 cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 
 
@@ -26,7 +26,7 @@ cp ${UCVM_INSTALL_PATH}/conf/ucvm.conf .
 #ny = 1101
 #gridSpacing = 0.005 
 
-srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/basin_query_mpi -b ${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.first,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.firstOrSecond,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.last,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.secondOnly,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.threeLast -o ${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.result,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.meta.json -f ${SLURM_SUBMIT_DIR}/ucvm.conf -m cvmsi -i 20 -v 2500 -l 31,-121.0 -s 0.005 -x 1701 -y 1101
+srun -v --mpi=pmi2 ${SLURM_SUBMIT_DIR}/basin_query_mpi_complete -b ${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.first,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.firstOrSecond,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.last,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.secondOnly,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.threeLast -o ${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.result,${TEST_TOP_PATH}/RESULT/hpc_cvmsi_z2.5_proj.meta.json -f ${SLURM_SUBMIT_DIR}/ucvm.conf -m cvmsi -i 20 -v 2500 -l 31,-121.0 -s 0.005 -x 1701 -y 1101
 
 
 ret=$?
