@@ -1,0 +1,11 @@
+
+datafile  =  cca_z2.5.secondOnly
+lat1  =  36.349998
+lat2  =  36.849998
+cvm_selected  =  cca
+extra  =  (second only crossing/old)
+spacing  =  0.005
+outfile  =  cca_z2.5_secondOnly_map.png
+lon1  =  -120.0
+lon2  =  -119.5
+

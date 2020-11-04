@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#cvms5
+#universal in: -119.03 35.8  (Bakersfield)
+#in: -118.5  33.5
+#out:-121    36
+
+../bin/ucvm_query -f ../conf/ucvm.conf -m cvms5 << EOD 
+-121 37 0
+-121 36 0
+-118.5 33.5 0
+EOD
+
+#./plot_depth_profile.py -d vs -b 0 -e 60000 -v 100 -c cvms5 -s 35.8,-119.03 -o cvms5_0_vs_depth.png
+#./plot_depth_profile.py -d vs -b 0 -e 60000 -v 100 -c cvms5 -s 33.5,-118.05 -o cvms5_inside_depth_profile.png
+#/plot_depth_profile.py -d vs -b 0 -e 60000 -v 100 -c cvms5 -s 36,-121 -o cvms5_inside_depth_profile.png
+#./plot_depth_profile.py -d vs -b 0 -e 60000 -v 100 -c cvms5 -s 37,-121 -o cvms5_outside_depth_profile.png
+
+#./plot_horizontal_slice.py -b 33.5,-118.5 -u 34.5,-117 -e 900 -d vs -c cvms5 -a s -s 0.001 -o cvms5_900m_horizontal.png 
+
+./plot_cross_section.py -b 34,-117.7 -u 34,-117.5 -h 100 -v 20 -d vs -c cvms5 -a d -s 0 -e 2000 -o cvms5_GTL_cross.png 

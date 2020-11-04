@@ -1,0 +1,3 @@
+source /home/scec-00/mei/setup_env.sh
+${UCVM_INSTALL_PATH}/bin/ucvm2mesh -f ./hpc_ucvm2mesh.conf
+

@@ -1,0 +1,209 @@
+#!/bin/sh  
+
+#Request for etree
+#From:   Esmaeilzadeh Seylabi, Elnaz <elnaz@caltech.edu>
+
+
+etree_go () {
+   sbatch ${SLURM_EXTRACT_SCRIPT}
+}
+
+etree_slurm() {
+
+scriptfile=./${SLURM_EXTRACT_SCRIPT}
+
+/bin/cat >$scriptfile << EEND 
+#!/bin/bash
+#SBATCH --ntasks=65
+#SBATCH -N 65 
+#SBATCH --mem 0 # Set to unlimited memory
+#SBATCH --time=24:00:00 
+#SBATCH -o ${PWD}/mpi_${LABEL}_${GTL}_extract_etree.out
+#SBATCH -e ${PWD}/mpi_${LABEL}_${GTL}_extract_etree.err
+#SBATCH --export=NONE 
+#SBATCH --mail-user=mei@usc.edu
+#SBATCH --mail-type=END
+
+source /home/rcf-40/mei/setup_env_proj.sh
+source /home/scec-00/mei/ucvmc_19_4/UCVMC/conf/ucvm_bash.sh
+
+###############################################################################
+
+cp ${UCVM_INSTALL}/bin/ucvm2etree_extract_MPI .
+cp ${UCVM_INSTALL}/conf/ucvm.conf .
+
+srun -v --mpi=pmi2 ./ucvm2etree_extract_MPI -f ${PWD}/${ETREE_CONFIG}
+sbatch ${SLURM_SORT_SCRIPT}
+
+EEND
+
+scriptfile=./${SLURM_SORT_SCRIPT}
+
+/bin/cat >$scriptfile << EEEND 
+#!/bin/bash
+#SBATCH -a lc_pjm
+#SBATCH --ntasks=64
+#SBATCH -N 64 
+#SBATCH --mem 0 # Set to unlimited memory
+#SBATCH --time=22:00:00 
+#SBATCH -o ${PWD}/mpi_${LABEL}_${GTL}_sort_etree.out
+#SBATCH -e ${PWD}/mpi_${LABEL}_${GTL}_sort_etree.err
+#SBATCH --export=NONE 
+#SBATCH --mail-user=mei@usc.edu
+#SBATCH --mail-type=END
+
+source /home/rcf-40/mei/setup_env_proj.sh
+source /home/scec-00/mei/ucvmc_19_4/UCVMC/conf/ucvm_bash.sh
+
+###############################################################################
+
+cp ${UCVM_INSTALL}/bin/ucvm2etree_sort_MPI .
+cp ${UCVM_INSTALL}/conf/ucvm.conf .
+
+srun -v --mpi=pmi2 ./ucvm2etree_sort_MPI -f ${PWD}/${ETREE_CONFIG}
+sbatch ${SLURM_MERGE_SCRIPT}
+
+EEEND
+
+scriptfile=./${SLURM_MERGE_SCRIPT}
+
+/bin/cat >$scriptfile << EEEEND 
+#!/bin/bash
+#SBATCH -a lc_pjm
+#SBATCH --ntasks=64
+#SBATCH -N 64 
+#SBATCH --mem 0 # Set to unlimited memory
+#SBATCH --time=22:00:00 
+#SBATCH -o ${PWD}/mpi_${LABEL}_${GTL}_merge_etree.out
+#SBATCH -e ${PWD}/mpi_${LABEL}_${GTL}_merge_etree.err
+#SBATCH --export=NONE 
+#SBATCH --mail-user=mei@usc.edu
+#SBATCH --mail-type=END
+
+
+source /home/rcf-40/mei/setup_env_proj.sh
+source /home/scec-00/mei/ucvmc_19_4/UCVMC/conf/ucvm_bash.sh
+
+###############################################################################
+
+cp ${UCVM_INSTALL}/bin/ucvm2etree_merge_MPI .
+cp ${UCVM_INSTALL}/conf/ucvm.conf .
+
+srun -v --mpi=pmi2 ./ucvm2etree_merge_MPI -f ${PWD}/${ETREE_CONFIG}
+
+EEEEND
+}
+
+## generate the etree.conf
+etree_foo() {
+
+configfile=./${ETREE_CONFIG}
+
+/bin/cat >$configfile << END 
+
+#
+# ${DATE}
+#
+# ${ETREE_CONFIG}
+#
+proj=geo-bilinear 
+lon_0=-119.288842
+lat_0=  34.120549
+
+lon_1=-118.354016
+lat_1=  35.061096
+
+lon_2=-116.846030
+lat_2=  34.025873
+
+lon_3=-117.780976
+lat_3=  33.096503
+
+# Domain dimensions (meters):
+y-size=135000.0
+x-size=180000.0 
+z-size=22500.0
+
+# Max freq, points per wavelength, Vs min
+#max_freq=5.0
+#ppwl=10.0
+#vs_min=500
+max_freq=${MAX_FREQ}
+ppwl=${PPWL}
+vs_min=${VS_MIN}
+
+# Blocks partition parameters:
+ny=24
+nx=32
+ 
+# Max allowed size of octants in meters
+max_octsize=10000.0
+
+# Etree parameters and info
+title=La_Habra_${MAX_FREQ}hz_${PPWL}pts_${VS_MIN}ms
+date=11/2019
+format=etree 
+author=Elnaz
+outputfile=./mpi_La_Habra_${MODEL}_${GTL}_${MAX_FREQ}hz_${PPWL}pts_${VS_MIN}ms.e
+
+# UCVM parameters
+ucvmstr=${MODEL}
+ucvm_interp_zrange=0.0,350.0 
+ucvmconf=${UCVM_INSTALL}/conf/ucvm.conf
+
+# Scratch
+scratch=./scratch
+
+#
+# Buffering parameters
+#
+# Etree buffer size in MB
+buf_etree_cache=128
+# Max octants to buffer for flat file during extraction
+buf_extract_mem_max_oct=4194304
+# Max octants to save in flat file before reporting full during extraction
+buf_extract_ffile_max_oct=40000000
+# Max octants to read from input flat file during sorting
+buf_sort_ffile_max_oct=40000000
+# Minimum number of octants between reports during merging
+buf_merge_report_min_oct=10000000
+# MPI send/recv octant buffer size during merging
+#buf_merge_sendrecv_buf_oct=4096
+buf_merge_sendrecv_buf_oct=4096
+# Etree read/write octant buffer size during merging
+#buf_merge_io_buf_oct=4194304
+buf_merge_io_buf_oct=8388608
+
+END
+}
+
+##
+#Elnaz,cvms5,SVM,5,10,200
+#
+
+UCVM_INSTALL="/home/scec-00/mei/ucvmc_19_4/UCVMC_TARGET"
+
+DATE=`date`
+
+input="etree_input.txt"
+while IFS= read -r file; do
+  arrData=(${file//,/ })
+  [[ $arrData =~ ^#.* ]] && continue
+  LABEL=${arrData[0]}
+  MODEL=${arrData[1]}
+  GTL=${arrData[2]}
+  MAX_FREQ=${arrData[3]}
+  PPWL=${arrData[4]}
+  VS_MIN=${arrData[5]}
+  ETREE_CONFIG=mpi_${LABEL}_${MODEL}_${GTL}_${MAX_FREQ}hz_${PPWL}pts_${VS_MIN}ms.conf
+  SLURM_EXTRACT_SCRIPT=mpi_${LABEL}_${GTL}_extract_etree.slurm
+  SLURM_SORT_SCRIPT=mpi_${LABEL}_${GTL}_sort_etree.slurm
+  SLURM_MERGE_SCRIPT=mpi_${LABEL}_${GTL}_merge_etree.slurm
+  PWD=`pwd`
+
+  etree_foo
+  etree_slurm
+  etree_go
+
+done < "$input"
+

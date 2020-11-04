@@ -1,0 +1,60 @@
+#!/bin/bash
+## USC hpc => hpc-login3.usc.edu
+
+## setup mpi environment
+source /usr/usc/openmpi/1.8.8/setup.sh
+
+## prepend velocity model's lib
+export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
+export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
+
+if [ $LD_LIBRARY_PATH ] ; then
+  export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib:$LD_LIBRARY_PATH
+  else
+    export LD_LIBRARY_PATH=$UCVM_INSTALL_PATH/lib/euclid3/lib:$UCVM_INSTALL_PATH/lib/proj-4/lib:$UCVM_INSTALL_PATH/model/cvms426/lib:$UCVM_INSTALL_PATH/model/cencal/lib
+fi
+#echo $LD_LIBRARY_PATH
+
+## setup python script
+if [ $PYTHONPATH ] ; then 
+  export PYTHONPATH=$PYTHONPATH:$UCVM_SRC_PATH/utilities/pycvm
+  else
+     export PYTHONPATH=$UCVM_SRC_PATH/utilities/pycvm
+fi
+#echo $PYTHONPATH
+
+## prepend anaconda's bin, including python2.7
+export PATH=/home/scec-00/mei/anaconda2/bin:$PATH
+
+rm -rf $TEST_UCVMC_TARGET 
+mkdir $TEST_UCVMC_TARGET
+
+cd $TEST_UCVMC_TARGET
+#git clone https://github.com/meihuisu/UCVMC.git
+git clone https://github.com/meihuisu/UCVMC-meihui.git UCVMC
+#git clone https://github.com/SCECcode/UCVMC.git
+#cd UCVMC; git checkout dev
+
+cd $UCVM_SRC_PATH/largefiles 
+./get_large_files.py << EOB
+y
+y
+n
+n
+y
+y
+y
+EOB
+
+cd $UCVM_SRC_PATH/largefiles; ./check_largefiles_md5.py
+cd $UCVM_SRC_PATH/largefiles; ./stage_large_files.py
+
+cd $UCVM_SRC_PATH
+./ucvm_setup.py -d -a << EOF &> ucvm_setup_install.log
+$UCVM_INSTALL_PATH
+EOF
+
+cd $UCVM_SRC_PATH; make check &> ucvm_setup_make_check.log
+
+echo "..EXITING.."

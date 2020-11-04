@@ -1,0 +1,18 @@
+##
+## etree_input.txt
+#
+#label,MODEL,GTL,MAX_FREQ, PPWL, VS_MIN
+#test1,cvmh,gtl,0.5,10.0,1000
+##test1,cvmh,nogtl,0.5,10.0,1000
+#test2,cvmh,gtl,5,10.0,1000
+##test2,cvmh,nogtl,5,10.0,1000
+##test3,cvms5,gtl,0.5,10.0,1000
+##test3,cvms5,nogtl,0.5,10.0,1000
+#test4,cvms5,gtl,5,10.0,1000
+##test4,cvms5,nogtl,5,10.0,1000
+##test5,cvmsi,gtl,0.5,10.0,1000
+#test6,cvmsi,gtl,5,10.0,1000
+Elnaz2,cvms5,gtl,5,10,200
+#Elnaz2,cvms5,nogtl,5,10,200
+#Elnaz1,cvmh,gtl,5,10,200
+#Elnaz1,cvmh,nogtl,5,10,200

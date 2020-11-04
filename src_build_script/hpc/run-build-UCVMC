@@ -5,7 +5,8 @@
 source /usr/usc/openmpi/1.8.8/setup.sh
 
 ## prepend velocity model's lib
-export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+#export TEST_UCVMC_TARGET=/home/scec-00/mei/TARGET_UCVMC
+export TEST_UCVMC_TARGET=/home/scec-00/mei/ucvmc_19_4
 export UCVM_SRC_PATH=$TEST_UCVMC_TARGET/UCVMC
 export UCVM_INSTALL_PATH=$TEST_UCVMC_TARGET/install
 
@@ -36,12 +37,13 @@ git clone https://github.com/SCECcode/UCVMC.git -b forGFM
 cd $UCVM_SRC_PATH/largefiles 
 ./get_large_files.py << EOB
 y
-n
+y
 n
 n
 y
 y
-n
+y
+y
 y
 EOB
 
