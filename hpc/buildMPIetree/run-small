@@ -1,0 +1,128 @@
+#!/bin/sh  
+
+#Request for etree
+#From:   Esmaeilzadeh Seylabi, Elnaz <elnaz@caltech.edu>
+#CC:     Ricardo Taborda Rios <rtaborda@eafit.edu.co>, Asimaki,
+#        Domniki (Domniki) <domniki@caltech.edu>,
+#        Doriam Leidin Restrepo Sánchez <drestre6@eafit.edu.co>
+
+
+etree_go () {
+  ${UCVM_INSTALL}/bin/ucvm2etree -f ${ETREE_CONFIG}
+}
+
+## generate the etree.conf
+etree_foo() {
+
+configfile=./${ETREE_CONFIG}
+
+/bin/cat >$configfile << END 
+
+#
+# ${DATE}
+#
+# ${ETREE_CONFIG}
+#
+
+proj=geo-bilinear 
+lon_0=-116.8593
+lat_0=33.6403
+
+lon_1=-116.6457
+lat_1=33.7958
+
+lon_2=-116.3984
+lat_2=33.5572
+
+lon_3=-116.6119
+lat_3=33.4022
+
+# Domain dimensions (meters):
+x-size=35000.0000
+y-size=26250.0000
+z-size=4375.0000
+
+# Max freq, points per wavelength, Vs min
+max_freq=${MAX_FREQ}
+ppwl=${PPWL}
+vs_min=${VS_MIN}
+
+# Blocks partition parameters:
+nx=8
+ny=6
+ 
+# Max allowed size of octants in meters
+max_octsize=10000.0
+
+# Etree parameters and info
+title=GarnerValley_${MAX_FREQ}hz_${PPWL}pts_${VS_MIN}ms
+author=Mei_Hui_Su4Elnza
+date=02/27/2019
+outputfile=./${LABEL}_garnervalley_${MODEL}_${GTL}_${MAX_FREQ}hz_${PPWL}pts_${VS_MIN}ms.e
+format=etree 
+
+# UCVM parameters
+#ucvmstr=${MODEL}
+#ucvm_interp_zrange=0.0,350.0 
+ucvmstr=${MODEL},svm:svm1d
+ucvm_interp_zrange=Z1
+ucvmconf=${UCVM_INSTALL}/conf/ucvm.conf
+
+# Scratch
+scratch=./scratch
+
+#
+# Buffering parameters
+#
+# Etree buffer size in MB
+buf_etree_cache=128
+# Max octants to buffer for flat file during extraction
+buf_extract_mem_max_oct=4194304
+# Max octants to save in flat file before reporting full during extraction
+buf_extract_ffile_max_oct=16000000
+# Max octants to read from input flat file during sorting
+buf_sort_ffile_max_oct=20000000
+# Minimum number of octants between reports during merging
+buf_merge_report_min_oct=10000000
+# MPI send/recv octant buffer size during merging
+buf_merge_sendrecv_buf_oct=4096
+# Etree read/write octant buffer size during merging
+buf_merge_io_buf_oct=4194304
+
+
+END
+}
+
+##
+## etree_input.txt
+#
+#label,MODEL,GTL,MAX_FREQ, PPWL, VS_MIN
+#test1,cvmh,gtl,0.5,10.0,1000
+#test1,cvmh,nogtl,0.5,10.0,1000
+#test2,cvmh,gtl,5,10.0,1000
+#test2,cvmh,nogtl,5,10.0,1000
+#Elnaz1,cvmh,gtl,5,10,200
+#Elnaz1,cvmh,nogtl,5,10,200
+#Elnaz2,cvmh,gtl,5,10,150
+#Elnaz2,cvmh,nogtl,5,10,150
+
+UCVM_INSTALL="/home/scec-00/mei/ucvmc_19_4/install"
+DATE=`date`
+
+input="etree_input.txt"
+while IFS= read -r file; do
+  arrData=(${file//,/ })
+  [[ $arrData =~ ^#.* ]] && continue
+  LABEL=${arrData[0]}
+  MODEL=${arrData[1]}
+  GTL=${arrData[2]}
+  MAX_FREQ=${arrData[3]}
+  PPWL=${arrData[4]}
+  VS_MIN=${arrData[5]}
+  ETREE_CONFIG=${LABEL}_garnervalley_${MODEL}_${GTL}_${MAX_FREQ}hz_${PPWL}pts_${VS_MIN}ms.conf
+  
+  etree_foo
+  etree_go
+
+done < "$input"
+

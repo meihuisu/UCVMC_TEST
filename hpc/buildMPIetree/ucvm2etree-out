@@ -1,0 +1,44 @@
+		[0] Bilinear Dims: 35000.000000 m, 26250.000000 m
+	[0] Region Dims: 35000.000000 m, 26250.000000 m, 4375.000000 m
+	[0] Max Freq: 5.000000 Hz
+	[0] Points/Wavelength: 10.000000
+	[0] Max Cell Size: 10000.000000 m
+	[0] Author: Mei_Hui_Su4Elnza
+	[0] Title: GarnerValley_5hz_10pts_200ms
+	[0] Date: 02/27/2019
+	[0] Output File: ./Elnaz_garnervalley_cvms5_SVM_5hz_10pts_200ms.e
+	[0] UCVM String: cvms5,svm:svm1d
+	[0] UCVM Interp: 0.000000 m - 0.000000 m
+	[0] UCVM InterpZ: Z1
+	[0] UCVM Conf: /home/scec-00/mei/ucvmc_19_4/install/conf/ucvm.conf
+	[0] Vs Min: 200.000000 m/s
+	[0] Scratch Dir: ./scratch
+
+[0] Buffers:
+	[0] Etree Cache: 128 MB
+	[0] Extract Mem Max Oct: 4194304
+	[0] Extract FF Max Oct: 16000000
+	[0] Sort FF Max Oct: 20000000
+	[0] Merge Report Min Oct: 10000000
+	[0] Merge SendRecv Buf Oct: 4096
+	[0] Merge IO Buf Oct: 4194304
+
+[0] Calculated for 5.000000 Hz, 200.000000 m/s, 10.000000 ppwl:
+	[0] Min Edge Size To Support Vs Min: 4.000000 m
+	[0] Max Edge Size To Allow: 4375.000000 m
+	[0] Max Level: 14 (2.136230 m)
+	[0] Min Level: 3 (4375.000000 m)
+	[0] Tick Size: 1.629815e-05 m
+	[0] Col X,Y,Z Tics: 268435456, 268435456, 268435456
+
+Column length and width must be equal, 268435456 268435456
+Setting up UCVM
+# zranges 0.000000 0.000000 
+setting the zthreshold ..
+Opening etree ./Elnaz_garnervalley_cvms5_SVM_5hz_10pts_200ms.e
+Registering schema
+Allocating buffers to hold 4194304 points
+Extracting col 0,0
+Extracting col 0,0
+
+
